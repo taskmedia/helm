@@ -1,24 +1,40 @@
 apiVersion: v1
 entries:
   ipsec-vpn-server:
-  - apiVersion: v2
-    appVersion: 0.0.0
-    created: "2022-02-19T19:53:06.833854343Z"
-    description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
-    digest: 116c62eba7d33855627acaaeafe9205451cf6ba7e50be8d4e399da274f0e1ce5
-    name: ipsec-vpn-server
-    type: application
-    urls:
-    - https://ipsec-vpn-server.helm.task.media/ipsec-vpn-server-1.0.2.tgz
-    version: 1.0.2
-  - apiVersion: v2
-    appVersion: 0.0.0
-    created: "2022-02-19T19:53:06.832017428Z"
-    description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
-    digest: a0bfab133191e9a2de6a279b78fdf5fd56842f1dad4ea820c15811818ba5976f
-    name: ipsec-vpn-server
-    type: application
-    urls:
-    - https://ipsec-vpn-server.helm.task.media/ipsec-vpn-server-1.0.1.tgz
-    version: 1.0.1
-generated: "2022-02-19T19:53:06.830375425Z"
+    - apiVersion: v2
+      appVersion: 0.0.0
+      created: "2022-02-19T19:53:06.833854343Z"
+      description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
+      digest: 116c62eba7d33855627acaaeafe9205451cf6ba7e50be8d4e399da274f0e1ce5
+      name: ipsec-vpn-server
+      type: application
+      urls:
+        - https://ipsec-vpn-server.helm.task.media/ipsec-vpn-server-1.0.2.tgz
+      version: 1.0.2
+    - apiVersion: v2
+      appVersion: 0.0.0
+      created: "2022-02-19T19:53:06.832017428Z"
+      description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
+      digest: a0bfab133191e9a2de6a279b78fdf5fd56842f1dad4ea820c15811818ba5976f
+      name: ipsec-vpn-server
+      type: application
+      urls:
+        - https://ipsec-vpn-server.helm.task.media/ipsec-vpn-server-1.0.1.tgz
+      version: 1.0.1
+
+  vpn-ios-profile:
+    - apiVersion: v2
+      appVersion: latest
+      created: "2022-02-20T19:59:57.439400824Z"
+      dependencies:
+        - name: ipsec-vpn-server
+          repository: https://ipsec-vpn-server.helm.task.media/
+          version: 1.0.2
+      description: Deploy a VPN server in K8s with provided iOS profile
+      digest: fd3f91cebf3fa42515c3e3e29319f202a45cde754080420044f0c679bed285d9
+      name: vpn-ios-profile
+      type: application
+      urls:
+        - https://vpn-ios-profile.helm.task.media/vpn-ios-profile-0.1.1.tgz
+      version: 0.1.1
+generated: "2022-02-21T19:30:00.000000000Z"
