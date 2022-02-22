@@ -1,6 +1,8 @@
-# IPsec VPN Server Helm chart
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/ipsec-vpn-server)](https://artifacthub.io/packages/helm/ipsec-vpn-server/ipsec-vpn-server)
 
-Kubernetes [Helm](https://helm.sh) chart image to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2.
+# Helm chart: IPsec VPN server
+
+Kubernetes [Helm](https://helm.sh) chart to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2.
 This is based on the docker image [hwdsl2/docker-ipsec-vpn-server](https://github.com/hwdsl2/docker-ipsec-vpn-server).
 
 The main goal is to simplify the deployment of a VPN server for k8s.
