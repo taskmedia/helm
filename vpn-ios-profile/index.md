@@ -1,4 +1,4 @@
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/vpn-ios-profile)](https://artifacthub.io/packages/helm/vpn-ios-profile/vpn-ios-profile)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/taskmedia)](https://artifacthub.io/packages/helm/taskmedia/vpn-ios-profile)
 
 # Helm chart: IPsec VPN server with iOS profile
 
@@ -22,3 +22,18 @@ You can specify a list of SSID (Networkname) which should be trusted.
 If you do not want the VPN to be used automatically select this option.
 This allows you to enable it whenever you need it.
 You can enable the VPN connection in your iOS preferences.
+
+## Installation
+
+To deploy the Helm chart first copy the [`values.yaml`](./values.yaml)-file and customize your deployment.
+After it was modified you can deploy the chart with the following command.
+
+```bash
+$ helm repo add taskmedia https://helm.task.media
+$ helm repo update
+
+$ helm show values taskmedia/vpn-ios-profile > ./my-values.yaml
+$ vi ./my-values.yaml
+
+$ helm upgrade --install vpn taskmedia/vpn-ios-profile --values ./my-values.yaml
+```
