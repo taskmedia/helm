@@ -31,6 +31,13 @@ $ vi ./my-values.yaml
 $ helm upgrade --install vpn taskmedia/ipsec-vpn-server --values ./my-values.yaml
 ```
 
+You can also use OCI Helm charts from [ghcr.io](https://ghcr.io/) or Docker Hub:
+
+```bash
+$ helm upgrade --install vpn oci://ghcr.io/taskmedia/ipsec-vpn-server
+$ helm upgrade --install vpn oci://registry-1.docker.io/taskmedia/ipsec-vpn-server
+```
+
 ## Using sealed-secrets
 
 To ensure your passwords can be committed to the repository (GitOps) without security issues you can use the integrated [sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) approach.

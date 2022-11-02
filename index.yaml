@@ -3,9 +3,9 @@ entries:
   ipsec-vpn-server:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.439788273Z"
+    created: "2022-11-02T09:12:36.020726378Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
-    digest: 0b0576ba9af53bfc9ddfc3c5f1ce69cfce76725608b9ac8166f6caa749e11fe1
+    digest: 9f532edd442f90ff6bbddef591f3b0cb79928d8b4c2426cbb3fe7bb9dabc885b
     home: https://helm.task.media/ipsec-vpn-server
     icon: https://media.task.media/images/logo.png
     keywords:
@@ -21,7 +21,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.439337875Z"
+    created: "2022-11-02T09:12:36.019999363Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9ddfaacacd329717a09debffd95d02c29ce08c292cc902f05d05fea0f1b88462
     home: https://helm.task.media/ipsec-vpn-server
@@ -39,7 +39,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.438919777Z"
+    created: "2022-11-02T09:12:36.019143145Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 55386126b63ade097c4d4002bc1817554b051b38ab53761bf1a53c1de09d2e05
     home: https://helm.task.media/ipsec-vpn-server
@@ -57,7 +57,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.438471879Z"
+    created: "2022-11-02T09:12:36.018592433Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 433e9ca0f3bbd38cafa836c9627e5cbfb3be671dff80215a11ea3601f01f69b4
     home: https://helm.task.media/ipsec-vpn-server
@@ -75,7 +75,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-31T13:43:59.437988182Z"
+    created: "2022-11-02T09:12:36.018080322Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 116c62eba7d33855627acaaeafe9205451cf6ba7e50be8d4e399da274f0e1ce5
     name: ipsec-vpn-server
@@ -85,7 +85,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-31T13:43:59.437570784Z"
+    created: "2022-11-02T09:12:36.017613513Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: a0bfab133191e9a2de6a279b78fdf5fd56842f1dad4ea820c15811818ba5976f
     name: ipsec-vpn-server
@@ -96,7 +96,7 @@ entries:
   vpn-ios-profile:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.444056151Z"
+    created: "2022-11-02T09:12:36.026159593Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -120,7 +120,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.442751957Z"
+    created: "2022-11-02T09:12:36.02505587Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -141,7 +141,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.442018061Z"
+    created: "2022-11-02T09:12:36.024180851Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -162,7 +162,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.441292065Z"
+    created: "2022-11-02T09:12:36.023286633Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -183,7 +183,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-31T13:43:59.440545069Z"
+    created: "2022-11-02T09:12:36.022366713Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://ipsec-vpn-server.helm.task.media/
@@ -195,4 +195,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2022-10-31T13:43:59.436949587Z"
+generated: "2022-11-02T09:12:36.016937398Z"
