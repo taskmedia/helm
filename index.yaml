@@ -3,7 +3,30 @@ entries:
   ipsec-vpn-server:
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.226466391Z"
+    created: "2023-09-23T00:03:13.795916529Z"
+    description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
+    digest: f696ead0230a82d7fa2f6cbf40f15f90eeaa4203ea11b7ce648e28e6ad267071
+    home: https://helm.task.media/ipsec-vpn-server
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - vpn
+    - ipsec
+    - traefik
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: ipsec-vpn-server
+    sources:
+    - https://github.com/hwdsl2/docker-ipsec-vpn-server
+    - https://github.com/taskmedia/helm_ipsec-vpn-server
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-09-23T00:03:13.795501493Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: c96896711ea479d6bdbc646028f6d26f534f8db856cc5ce166f94917e2923698
     home: https://helm.task.media/ipsec-vpn-server
@@ -24,7 +47,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.225917586Z"
+    created: "2023-09-23T00:03:13.794808033Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9f532edd442f90ff6bbddef591f3b0cb79928d8b4c2426cbb3fe7bb9dabc885b
     home: https://helm.task.media/ipsec-vpn-server
@@ -42,7 +65,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.225360381Z"
+    created: "2023-09-23T00:03:13.793819548Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9ddfaacacd329717a09debffd95d02c29ce08c292cc902f05d05fea0f1b88462
     home: https://helm.task.media/ipsec-vpn-server
@@ -60,7 +83,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.224880376Z"
+    created: "2023-09-23T00:03:13.79315039Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 55386126b63ade097c4d4002bc1817554b051b38ab53761bf1a53c1de09d2e05
     home: https://helm.task.media/ipsec-vpn-server
@@ -78,7 +101,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.22424367Z"
+    created: "2023-09-23T00:03:13.792730654Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 433e9ca0f3bbd38cafa836c9627e5cbfb3be671dff80215a11ea3601f01f69b4
     home: https://helm.task.media/ipsec-vpn-server
@@ -96,7 +119,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2023-09-22T07:06:12.223710165Z"
+    created: "2023-09-23T00:03:13.792270414Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 116c62eba7d33855627acaaeafe9205451cf6ba7e50be8d4e399da274f0e1ce5
     name: ipsec-vpn-server
@@ -106,7 +129,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2023-09-22T07:06:12.223226961Z"
+    created: "2023-09-23T00:03:13.791860179Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: a0bfab133191e9a2de6a279b78fdf5fd56842f1dad4ea820c15811818ba5976f
     name: ipsec-vpn-server
@@ -117,7 +140,7 @@ entries:
   vpn-ios-profile:
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.232107443Z"
+    created: "2023-09-23T00:03:13.800828152Z"
     dependencies:
     - alias: vpnserver
       name: ipsec-vpn-server
@@ -144,7 +167,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.231003533Z"
+    created: "2023-09-23T00:03:13.799828366Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -168,7 +191,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.230075925Z"
+    created: "2023-09-23T00:03:13.798960691Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -189,7 +212,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.229251517Z"
+    created: "2023-09-23T00:03:13.798180624Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -210,7 +233,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.22849991Z"
+    created: "2023-09-23T00:03:13.797436059Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -231,7 +254,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: latest
-    created: "2023-09-22T07:06:12.227718303Z"
+    created: "2023-09-23T00:03:13.796683295Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://ipsec-vpn-server.helm.task.media/
@@ -243,4 +266,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2023-09-22T07:06:12.222544254Z"
+generated: "2023-09-23T00:03:13.790718381Z"
