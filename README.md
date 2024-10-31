@@ -4,6 +4,7 @@
 
 - [ipsec-vpn-server](./ipsec-vpn-server/) [![GitHub](https://img.shields.io/badge/repository-taskmedia%2Fhelm__ipsec--vpn--server-lightgrey?logo=github&style=flat-square)](https://github.com/taskmedia/helm_ipsec-vpn-server)
 - [paperlessngx-backup](./paperlessngx-backup/) [![GitHub](https://img.shields.io/badge/repository-taskmedia%2Fhelm__paperlessngx--backup-lightgrey?logo=github&style=flat-square)](https://github.com/taskmedia/helm_paperlessngx-backup)
+- [paperlessngx-ftp-bridge](./paperlessngx-ftp-bridge/) [![GitHub](https://img.shields.io/badge/repository-taskmedia%2Fhelm__paperlessngx--ftp--bridge-lightgrey?logo=github&style=flat-square)](https://github.com/taskmedia/paperlessngx-ftp-bridge)
 - [vpn-ios-profile](./vpn-ios-profile/) [![GitHub](https://img.shields.io/badge/repository-taskmedia%2Fhelm__vpn--ios--profile-lightgrey?logo=github&style=flat-square)](https://github.com/taskmedia/helm_vpn-ios-profile)
 
 # Helm OCI installation
