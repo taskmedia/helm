@@ -3,7 +3,7 @@ entries:
   ipsec-vpn-server:
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.832526698Z"
+    created: "2025-03-13T16:29:46.529713577Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 8599fc2413dd716611aaf4ee1c7e686683f4611cfbcd0492b58c43b1d94fb0cf
     home: https://helm.task.media/ipsec-vpn-server
@@ -26,7 +26,7 @@ entries:
     version: 2.1.2
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.832207924Z"
+    created: "2025-03-13T16:29:46.529355486Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9cf3e5cb1e6c10dd7c7dc90e134334cf7b708b9a654161f00b12ac86ef0ef8b6
     home: https://helm.task.media/ipsec-vpn-server
@@ -49,7 +49,7 @@ entries:
     version: 2.1.1
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.831924435Z"
+    created: "2025-03-13T16:29:46.529051677Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: f696ead0230a82d7fa2f6cbf40f15f90eeaa4203ea11b7ce648e28e6ad267071
     home: https://helm.task.media/ipsec-vpn-server
@@ -72,7 +72,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.831642069Z"
+    created: "2025-03-13T16:29:46.528745174Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: c96896711ea479d6bdbc646028f6d26f534f8db856cc5ce166f94917e2923698
     home: https://helm.task.media/ipsec-vpn-server
@@ -93,7 +93,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.831357749Z"
+    created: "2025-03-13T16:29:46.528315529Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9f532edd442f90ff6bbddef591f3b0cb79928d8b4c2426cbb3fe7bb9dabc885b
     home: https://helm.task.media/ipsec-vpn-server
@@ -111,7 +111,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.830999121Z"
+    created: "2025-03-13T16:29:46.527303192Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 9ddfaacacd329717a09debffd95d02c29ce08c292cc902f05d05fea0f1b88462
     home: https://helm.task.media/ipsec-vpn-server
@@ -129,7 +129,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.830643348Z"
+    created: "2025-03-13T16:29:46.526625773Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 55386126b63ade097c4d4002bc1817554b051b38ab53761bf1a53c1de09d2e05
     home: https://helm.task.media/ipsec-vpn-server
@@ -147,7 +147,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.83031754Z"
+    created: "2025-03-13T16:29:46.526271951Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 433e9ca0f3bbd38cafa836c9627e5cbfb3be671dff80215a11ea3601f01f69b4
     home: https://helm.task.media/ipsec-vpn-server
@@ -165,7 +165,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2024-11-04T09:31:23.829980602Z"
+    created: "2025-03-13T16:29:46.525944458Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: 116c62eba7d33855627acaaeafe9205451cf6ba7e50be8d4e399da274f0e1ce5
     name: ipsec-vpn-server
@@ -175,7 +175,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2024-11-04T09:31:23.829661979Z"
+    created: "2025-03-13T16:29:46.525630079Z"
     description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
     digest: a0bfab133191e9a2de6a279b78fdf5fd56842f1dad4ea820c15811818ba5976f
     name: ipsec-vpn-server
@@ -185,7 +185,30 @@ entries:
     version: 1.0.1
   paperless-ngx-backup:
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.833593075Z"
+    created: "2025-03-13T16:29:46.531069456Z"
+    description: Backup paperless-ngx via K8s cronjob to FTP
+    digest: 928c07613cccb2ff19db631a4fb56c9e45303b2802e578b9fa7d1055fc4aac04
+    home: https://helm.task.media/paperlessngx-backup
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - gpg
+    - backup
+    - document exporter
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-ngx-backup
+    sources:
+    - https://github.com/taskmedia/helm_paperlessngx-backup
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://helm.task.media/paperlessngx-backup/paperless-ngx-backup-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    created: "2025-03-13T16:29:46.530771207Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
     digest: be59123b69e56417f4bfe4024cc887b587cc03553143c52923f3978295b51f80
     home: https://helm.task.media/paperlessngx-backup
@@ -208,7 +231,7 @@ entries:
     - https://helm.task.media/paperlessngx-backup/paperless-ngx-backup-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.833295731Z"
+    created: "2025-03-13T16:29:46.530459864Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
     digest: 8c0c6b0edc302d88b0453434e9129027c552bfa0f76f4db547f12f2420d7b1e4
     home: https://helm.task.media/paperlessngx-backup
@@ -231,7 +254,7 @@ entries:
     - https://helm.task.media/paperlessngx-backup/paperless-ngx-backup-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.833002525Z"
+    created: "2025-03-13T16:29:46.530195088Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
     digest: dac9f49b18c15b332ffcafb9fa7dd57439e1173583a37ed9f30e05006e4c82ae
     home: https://helm.task.media/paperlessngx-backup
@@ -254,7 +277,7 @@ entries:
     - https://helm.task.media/paperlessngx-backup/paperless-ngx-backup-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.832765232Z"
+    created: "2025-03-13T16:29:46.52995591Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
     digest: c3cdd779e611de182d5f479de15214e3908efd1a828a8d44935738295f712950
     home: https://helm.task.media/paperlessngx-backup
@@ -301,7 +324,7 @@ entries:
     version: 0.1.3
   paperlessngx-ftp-bridge:
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.835500225Z"
+    created: "2025-03-13T16:29:46.532370783Z"
     description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
     digest: 81d92ba4a5bae92d5ca7638d29ac79436f8d06ab5b04913666857591f50d61e0
     home: https://helm.task.media/paperlessngx-ftp-bridge
@@ -323,7 +346,7 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-1.1.0.tgz
     version: 1.1.0
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.835246552Z"
+    created: "2025-03-13T16:29:46.532094505Z"
     description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
     digest: b2232718a7b130aa146e0cbbfa5ab077cef5da3d5116dc2a8a287cbe9ddc5aa2
     home: https://helm.task.media/paperlessngx-ftp-bridge
@@ -345,7 +368,7 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.834993681Z"
+    created: "2025-03-13T16:29:46.531850077Z"
     description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
     digest: 0285433b431923334fd112605f93c8507c1be3eb822d4d85cc1979b2c7479885
     home: https://helm.task.media/paperlessngx-ftp-bridge
@@ -367,7 +390,7 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-0.1.6.tgz
     version: 0.1.6
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.834548676Z"
+    created: "2025-03-13T16:29:46.531603456Z"
     description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
     digest: 4961f87a10cf099190327f0760c09b9e55fd9345f178c14e653e46bebe346fe7
     home: https://helm.task.media/paperlessngx-ftp-bridge
@@ -389,7 +412,7 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-0.1.5.tgz
     version: 0.1.5
   - apiVersion: v2
-    created: "2024-11-04T09:31:23.834070184Z"
+    created: "2025-03-13T16:29:46.531339421Z"
     description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
     digest: d44a4c73b8d23869c99980e7dff7fae9b1692bb8b02b027a0f560d011b1e7335
     home: https://helm.task.media/paperlessngx-ftp-bridge
@@ -413,7 +436,7 @@ entries:
   vpn-ios-profile:
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.839181425Z"
+    created: "2025-03-13T16:29:46.536728893Z"
     dependencies:
     - alias: vpnserver
       name: ipsec-vpn-server
@@ -440,7 +463,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.838430586Z"
+    created: "2025-03-13T16:29:46.53597939Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -464,7 +487,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.837811142Z"
+    created: "2025-03-13T16:29:46.53532235Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -485,7 +508,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.837268661Z"
+    created: "2025-03-13T16:29:46.534362101Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -506,7 +529,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.836695483Z"
+    created: "2025-03-13T16:29:46.533520916Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://helm.task.media/
@@ -527,7 +550,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: latest
-    created: "2024-11-04T09:31:23.836154554Z"
+    created: "2025-03-13T16:29:46.532955928Z"
     dependencies:
     - name: ipsec-vpn-server
       repository: https://ipsec-vpn-server.helm.task.media/
@@ -539,4 +562,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2024-11-04T09:31:23.829200689Z"
+generated: "2025-03-13T16:29:46.525180166Z"
