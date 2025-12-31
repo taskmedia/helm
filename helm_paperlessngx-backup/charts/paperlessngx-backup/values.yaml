@@ -1,0 +1,43 @@
+# schedule to run backups (default: every week, sunday at 02:00)
+cron: "0 2 * * 0"
+
+paperless:
+  # pod name of the paperless-ngx to be backed up
+  podname: paperless-ngx-0
+
+# encrypt your backup before sending to FTP with your public gpg key
+encryption:
+  enabled: false
+  publickey: |
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+    abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZab
+    -----END PGP PUBLIC KEY BLOCK-----
+
+# ftp configuration to upload backup to
+ftp:
+  host: ""
+  user: ""
+  # set password directly as value
+  password: ""
+  # set password from existing secret
+  passwordExistingSecret:
+    name: ""
+    key: ""
+  path: "."
+
+# image used for backup
+image:
+  repository: ghcr.io/taskmedia/kubectl-gpg-ncftp
+  tag: main
+
+# securitycontext for image
+securityContext:
+  runAsUser: 65534
+  runAsGroup: 65534
+
+# timeout for the job to complete backup
+timeout: 60
+
+# Retain pods for 1 day after job completion
+ttlSecondsAfterFinished: 86400
