@@ -1,0 +1,60 @@
+fullnameOverride: &global-fullnameOverride vpn-ios-profile
+
+# values of dependency chart ipsec-vpn-server
+vpnserver:
+  # Overwrite VPN configuration of ipsec-vpn-server chart
+  # recommended to overwrite name when using sealed-secrets
+  fullnameOverride: *global-fullnameOverride
+
+  vpn:
+    dns_name: vpn.example.com
+    psk: your_presharedkey
+
+  users:
+  - username: vpn
+    password: password
+
+    # add additional VPNs for this user
+    additionalVpns: []
+    # - name: fritzbox # optional
+    #   address: uuid.myfritz.net
+    #   psk: user-presharedkey
+    #   username: vpn
+    #   group: vpn
+    #   password: user-password
+
+    # add certificates for this user (e.g. for client / email authentication)
+    certs: []
+    # - name: user cert
+    #   filename: certs/user.p12
+
+iosprofile:
+  # You can use the variables %username and %dns_name.
+  ConsentText: "iOS Profile %username@%dns_name"
+  PayloadDisplayName: "iOS Profile to %dns_name with user %username"
+  PayloadDescription: "This iOS Profile provides VPN connection to %dns_name with the user %username"
+  PayloadIdentifier: "%dns_name.%username.ios-profile"
+  PayloadOrganization: "%dns_name"
+
+web:
+  # Enable web server to host iOS profiles
+  enabled: false
+
+  ingressroute:
+    # ingressroute to host iOS profiles at
+    host: ios.vpn.example.com
+
+    # basic auth credentials - username
+    username: ""
+    # basic auth credentials - password
+    password: ""
+
+# add certificates for all users (e.g. for certificate authority)
+certs: []
+# - name: root CA cert
+#   filename: certs/ca.cer
+
+# add wifi networks to the iOS profile
+wifi: []
+# - ssid: myhome-network
+#   password: myhome-password

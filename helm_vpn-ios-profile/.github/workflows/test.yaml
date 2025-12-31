@@ -1,0 +1,49 @@
+name: Test Helm chart
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - "main"
+
+jobs:
+  test:
+    name: Test Helm chart
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.8.1
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: set up chart-testing
+        uses: helm/chart-testing-action@v2.2.1
+
+      - name: run chart-testing (lint)
+        run: |
+          ct lint \
+            --charts ./
+
+      - name: create kind cluster
+        uses: helm/kind-action@v1.2.0
+
+      - name: setup chart dependency repository
+        run: |
+          helm repo add taskmedia https://helm.task.media/
+
+      - name: run chart-testing (install)
+        run: |
+          ct install \
+            --charts ./
