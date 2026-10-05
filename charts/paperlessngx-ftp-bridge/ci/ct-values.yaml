@@ -1,0 +1,10 @@
+# Minimal overrides so `ct install` can render and deploy this chart in CI.
+# Not representative of a real deployment. Password fields are intentionally
+# left unset: they're not required by the templates, and they resolve to
+# Kubernetes secretKeyRefs rather than plaintext env values.
+ftp:
+  host: "ftp.example.org"
+  user: "ci-test"
+
+paperless:
+  username: "ci-test"
