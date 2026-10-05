@@ -12,7 +12,7 @@ maintainers:
 - name: taskmedia
   url: https://task.media
 sources:
-- https://github.com/taskmedia/helm_vpn-ios-profile
+- https://github.com/taskmedia/helm
 
 type: application
 

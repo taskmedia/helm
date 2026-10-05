@@ -2,7 +2,7 @@
 
 # Helm chart: IPsec VPN server with iOS profile
 
-Kubernetes [Helm](https://helm.sh) chart to run a [IPsec VPN server](https://github.com/taskmedia/helm_ipsec-vpn-server) with provided iOS profile to directly connect your Apple device to use the VPN.
+Kubernetes [Helm](https://helm.sh) chart to run a [IPsec VPN server](https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server) with provided iOS profile to directly connect your Apple device to use the VPN.
 
 The main goal is to simplify the usage of a VPN with iOS by creating a `.mobileconfig` file to be used to add a profile to your iPhone / iPad.
 
