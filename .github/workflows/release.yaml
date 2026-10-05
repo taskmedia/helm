@@ -1,0 +1,113 @@
+name: Release Charts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "charts/**"
+
+jobs:
+  release:
+    # repo-level default_workflow_permissions is "write" (confirmed via
+    # `gh api repos/taskmedia/helm/actions/permissions/workflow`), so this
+    # job-level grant is sufficient without any org/repo settings change.
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.10.0
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Run chart-releaser
+        id: cr
+        # uses: helm/chart-releaser-action@v1.7.0
+        # using patched action - see https://github.com/helm/chart-releaser/pull/587
+        uses: fty4/helm_chart-releaser-action@v1.8.1-rc1
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          charts_dir: charts
+          mark_as_latest: false
+          skip_existing: true
+
+      # Update the chart table in gh-pages' own README.md with the latest
+      # versions from index.yaml. Unlike helm-template, taskmedia/helm has no
+      # README.md on `main` to mirror from (gh-pages owns its README
+      # directly), so this edits the checked-out gh-pages README in place
+      # and bootstraps the start/end markers on first run if they're missing.
+      - name: Checkout gh-pages
+        if: steps.cr.outputs.changed_charts != ''
+        run: |
+          git fetch origin gh-pages:gh-pages
+          git checkout gh-pages
+
+      - name: Generate chart table with yq
+        id: chart_table
+        if: steps.cr.outputs.changed_charts != ''
+        uses: mikefarah/yq@v4.54.1
+        with:
+          cmd: >-
+            yq -r '
+              "| Chart | Version | Description | Released |\n|------|---------|-------------|----------|",
+              (
+                .entries
+                | to_entries[]
+                | .key as $chart
+                | .value[0]
+                | "| " + $chart
+                  + " | [" + .version
+                  + "](" + .urls[0]
+                  + ") | " + .description
+                  + " | " + (.created | split("T")[0])
+                  + " |"
+              )
+            ' index.yaml
+
+      - name: Update gh-pages README
+        if: steps.cr.outputs.changed_charts != ''
+        shell: bash
+        run: |
+          CHART_TABLE="${{ steps.chart_table.outputs.result }}"
+          if grep -q '<!-- start charts -->' README.md; then
+            awk -v table="$CHART_TABLE" '
+              /<!-- start charts -->/ { print; print table; in_charts=1; next }
+              /<!-- end charts -->/ { in_charts=0; print; next }
+              !in_charts { print }
+            ' README.md > README.md.tmp
+            mv README.md.tmp README.md
+          else
+            {
+              echo ""
+              echo "## Charts"
+              echo ""
+              echo "<!-- start charts -->"
+              echo "$CHART_TABLE"
+              echo "<!-- end charts -->"
+            } >> README.md
+          fi
+
+      - name: Commit and push README update
+        if: steps.cr.outputs.changed_charts != ''
+        run: |
+          git add README.md
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: update chart list in gh-pages README [skip ci]"
+            git push origin gh-pages
+          else
+            echo "No changes to commit."
+          fi
