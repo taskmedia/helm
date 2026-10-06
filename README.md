@@ -32,6 +32,7 @@ chart sources on `main`; the release workflow replaces it with a live version ta
 README is mirrored to `gh-pages`.
 
 <!-- start charts -->
+
 | Chart | Version | Description | Released |
 |------|---------|-------------|----------|
 | ipsec-vpn-server | [2.2.0](https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-2.2.0.tgz) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | 2026-09-10 |
@@ -39,6 +40,7 @@ README is mirrored to `gh-pages`.
 | paperless-ngx-ftp-bridge | [0.1.3](https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz) | A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx | 2024-10-29 |
 | paperlessngx-ftp-bridge | [1.3.1](https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-1.3.1.tgz) | A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx | 2026-09-10 |
 | vpn-ios-profile | [0.3.1](https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.3.1.tgz) | Deploy a VPN server in K8s with provided iOS profile | 2026-09-10 |
+
 <!-- end charts -->
 
 ## Repository layout
