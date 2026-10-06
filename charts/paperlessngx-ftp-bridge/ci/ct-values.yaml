@@ -1,11 +1,9 @@
-# Minimal overrides so `ct install` can render and deploy this chart in CI.
-# Not representative of a real deployment: these are throwaway fixture
-# values, not real credentials.
+# Minimal overrides so `ct lint` can render this chart's templates.
+# This chart is excluded from `ct install` (see test.yaml), so these only
+# need to satisfy the templates' `required` checks, not start a real pod.
 ftp:
-  host: "ftp.example.org"
+  host: "ftp.example.org:21"
   user: "ci-test"
-  password: "ci-test"
 
 paperless:
   username: "ci-test"
-  password: "ci-test"
