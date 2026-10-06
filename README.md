@@ -27,8 +27,9 @@ helm upgrade --install my-release oci://ghcr.io/taskmedia/<chart>
 ## Charts
 
 For published versions and release dates, see [helm.task.media](https://helm.task.media)
-or [Artifact Hub](https://artifacthub.io/packages/search?repo=taskmedia) — the table below is
-maintained by hand and tracks chart sources, not versions.
+or [Artifact Hub](https://artifacthub.io/packages/search?repo=taskmedia). The table below tracks
+chart sources on `main`; the release workflow replaces it with a live version table when this
+README is mirrored to `gh-pages`.
 
 <!-- start charts -->
 

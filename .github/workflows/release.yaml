@@ -45,16 +45,16 @@ jobs:
           mark_as_latest: false
           skip_existing: true
 
-      # Update the chart table in gh-pages' own README.md with the latest
-      # versions from index.yaml. Unlike helm-template, taskmedia/helm has no
-      # README.md on `main` to mirror from (gh-pages owns its README
-      # directly), so this edits the checked-out gh-pages README in place
-      # and bootstraps the start/end markers on first run if they're missing.
+      # Mirror main's README onto gh-pages, then inject the chart table from
+      # index.yaml into its start/end markers. main is the single source of
+      # truth for the static content (title, badges, usage); gh-pages never
+      # carries hand-edited copy of its own.
       - name: Checkout gh-pages
         if: steps.cr.outputs.changed_charts != ''
         run: |
           git fetch origin gh-pages:gh-pages
           git checkout gh-pages
+          git show origin/main:README.md > README.md
 
       - name: Generate chart table with yq
         id: chart_table
