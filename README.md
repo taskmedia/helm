@@ -34,10 +34,10 @@ maintained by hand and tracks chart sources, not versions.
 
 | Chart | Description | Source |
 |-------|-------------|--------|
-| [ipsec-vpn-server](charts/ipsec-vpn-server) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | [helm_ipsec-vpn-server](https://github.com/taskmedia/helm_ipsec-vpn-server) |
-| [paperlessngx-backup](charts/paperlessngx-backup) | Backup paperless-ngx via K8s cronjob to FTP | [helm_paperlessngx-backup](https://github.com/taskmedia/helm_paperlessngx-backup) |
-| [paperlessngx-ftp-bridge](charts/paperlessngx-ftp-bridge) | Upload files from a FTP (TLS) server to paperless-ngx | [paperlessngx-ftp-bridge](https://github.com/taskmedia/paperlessngx-ftp-bridge) |
-| [vpn-ios-profile](charts/vpn-ios-profile) | Deploy a VPN server in K8s with a provided iOS profile | [helm_vpn-ios-profile](https://github.com/taskmedia/helm_vpn-ios-profile) |
+| [ipsec-vpn-server](charts/ipsec-vpn-server) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server) |
+| [paperlessngx-backup](charts/paperlessngx-backup) | Backup paperless-ngx via K8s cronjob to FTP | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-backup) |
+| [paperlessngx-ftp-bridge](charts/paperlessngx-ftp-bridge) | Upload files from a FTP (TLS) server to paperless-ngx | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge) |
+| [vpn-ios-profile](charts/vpn-ios-profile) | Deploy a VPN server in K8s with a provided iOS profile | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile) |
 
 <!-- end charts -->
 
@@ -48,8 +48,8 @@ charts/      Helm chart sources, one directory per chart
 scripts/     Local helper scripts (sealed-secrets, public key fetch)
 ```
 
-Each chart's source code typically lives in its own `taskmedia/helm_<chart>` repository; this
-repository packages and releases the Helm chart itself.
+Each chart's source previously lived in its own `taskmedia/helm_<chart>` repository; those
+repositories have been merged into this one, which now packages, releases, and sources each chart.
 
 ## Releasing
 
