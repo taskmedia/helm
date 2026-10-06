@@ -208,6 +208,28 @@ entries:
     version: 1.0.1
   paperless-ngx-backup:
   - apiVersion: v2
+    created: "2026-10-06T20:00:33.503640588Z"
+    description: Backup paperless-ngx via K8s cronjob to FTP
+    digest: c71010a1bb3b61adac1a9ff49febe4c5afdafd2c716f2d93d12c3536c57c8df7
+    home: https://helm.task.media/paperlessngx-backup
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - gpg
+    - backup
+    - document exporter
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-ngx-backup
+    sources:
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.1/paperless-ngx-backup-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
     created: "2026-09-10T07:45:33.728385021Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
     digest: 928c07613cccb2ff19db631a4fb56c9e45303b2802e578b9fa7d1055fc4aac04
@@ -651,4 +673,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-09-10T07:45:33.722828109Z"
+generated: "2026-10-06T20:00:33.50370206Z"
