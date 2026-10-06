@@ -85,7 +85,7 @@ jobs:
           CHART_TABLE="${{ steps.chart_table.outputs.result }}"
           if grep -q '<!-- start charts -->' README.md; then
             awk -v table="$CHART_TABLE" '
-              /<!-- start charts -->/ { print; print table; in_charts=1; next }
+              /<!-- start charts -->/ { print; print ""; print table; print ""; in_charts=1; next }
               /<!-- end charts -->/ { in_charts=0; print; next }
               !in_charts { print }
             ' README.md > README.md.tmp
@@ -96,7 +96,9 @@ jobs:
               echo "## Charts"
               echo ""
               echo "<!-- start charts -->"
+              echo ""
               echo "$CHART_TABLE"
+              echo ""
               echo "<!-- end charts -->"
             } >> README.md
           fi
