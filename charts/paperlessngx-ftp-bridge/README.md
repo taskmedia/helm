@@ -2,19 +2,19 @@
 
 # Helm chart: paperless-ngx FTP bridge
 
-Kubernetes [Helm](https://helm.sh) chart to automatically upload PDF files from a FTP server to paperless-ngx.
+Kubernetes [Helm](https://helm.sh) chart that embeds an FTP/FTPS server and forwards every uploaded file straight to the paperless-ngx API.
 
-This application will automatically search for PDF files on your FTP server and upload them to the paperless-ngx API.
-The application will run as a cronjob and will be executed every 5 minutes (can be changed).
-
-You can use this application e.g. if your document scanner can only upload files to a FTP server.
-With this bridge your scan device will be able to upload the documents directly with the FTP as file storage inbetween.
+Your scanner connects directly to this bridge over FTP; there's no separate FTP server to run or keep in sync, and uploads reach paperless-ngx the moment the transfer finishes.
 
 ## Configuration
 
 The configuration of the application will be set in the [`values.yaml`](./values.yaml)-file.
 Everything is pretty straight forward and should be self-explanatory.
 If you think more information should be provided or need help, feel free to open an issue.
+
+The application itself lives in [taskmedia/paperlessngx-ftp-bridge](https://github.com/taskmedia/paperlessngx-ftp-bridge); the design decisions referenced as ADRs in `values.yaml` and the templates are documented there under `docs/adr/`.
+
+Upgrading from an older chart version? See [`docs/MIGRATION.md`](./docs/MIGRATION.md) for breaking-change upgrade notes.
 
 ## Installation
 

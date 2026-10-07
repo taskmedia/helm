@@ -52,9 +52,7 @@ jobs:
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
-        # paperlessngx-ftp-bridge is excluded: its app image does a one-shot
-        # FTP connectivity check at startup and exits if it can't connect,
-        # which it never can from the CI sandbox. Safe to skip for now since
-        # that app is being rewritten without an FTP dependency; re-include
-        # once the rewrite lands.
+        # paperlessngx-ftp-bridge is excluded: its Service is a hardcoded
+        # LoadBalancer (kind assigns no external IP, so `--wait` would hang)
+        # and its image is built in the bridge repo, not here.
         run: ct install --all --chart-dirs charts --excluded-charts paperlessngx-ftp-bridge

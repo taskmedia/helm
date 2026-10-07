@@ -38,7 +38,7 @@ README is mirrored to `gh-pages`.
 |-------|-------------|--------|
 | [ipsec-vpn-server](charts/ipsec-vpn-server) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server) |
 | [paperlessngx-backup](charts/paperlessngx-backup) | Backup paperless-ngx via K8s cronjob to FTP | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-backup) |
-| [paperlessngx-ftp-bridge](charts/paperlessngx-ftp-bridge) | Upload files from a FTP (TLS) server to paperless-ngx | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge) |
+| [paperlessngx-ftp-bridge](charts/paperlessngx-ftp-bridge) | Embedded FTP/FTPS server that forwards scanner uploads to paperless-ngx | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge) |
 | [vpn-ios-profile](charts/vpn-ios-profile) | Deploy a VPN server in K8s with a provided iOS profile | [taskmedia/helm](https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile) |
 
 <!-- end charts -->
