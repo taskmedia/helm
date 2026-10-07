@@ -1,9 +1,19 @@
-# Minimal overrides so `ct lint` can render this chart's templates.
-# This chart is excluded from `ct install` (see test.yaml), so these only
-# need to satisfy the templates' `required` checks, not start a real pod.
+# Minimal overrides so `ct lint` can render this chart's templates (the
+# `required` checks). The chart is excluded from `ct install` (see
+# .github/workflows/test.yaml).
+#
+# paperless.url points at the bridge's own health-check server rather than a
+# real paperless-ngx: the bridge's Ping() treats any HTTP response as
+# reachable, so this keeps /readyz non-flaky without a second service.
 ftp:
-  host: "ftp.example.org:21"
-  user: "ci-test"
+  accounts:
+    - username: ctuser
+      password: ct-test-password
+  # ftpserverlib requires a real IP here, not a hostname.
+  pasv:
+    publicHost: 127.0.0.1
 
 paperless:
-  username: "ci-test"
+  url: "http://localhost:8080"
+  username: ctuser
+  password: ct-test-password
