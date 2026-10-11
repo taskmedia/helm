@@ -15,4 +15,18 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 1.1.1
+version: 1.1.2
+
+annotations:
+  artifacthub.io/category: storage
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-backup
+  artifacthub.io/images: |
+    - name: kubectl-gpg-ncftp
+      image: ghcr.io/taskmedia/kubectl-gpg-ncftp:main
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Add Artifact Hub metadata (category, links, images)
