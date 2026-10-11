@@ -248,6 +248,43 @@ entries:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
         - kind: added
+          description: Optional Traefik IngressRoute (ingressRoute.*) with optional cert-manager Certificate
+      artifacthub.io/images: |
+        - name: paperless-gpt
+          image: icereed/paperless-gpt:v0.29.0
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperless-gpt
+    apiVersion: v2
+    appVersion: 0.29.0
+    created: "2026-10-11T17:47:02.37030515Z"
+    description: A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant
+      for paperless-ngx
+    digest: 4f9a739bc50ee2fa08ca347797d19a260b5e40ca5c62da970347fc5e8731de12
+    home: https://helm.task.media/paperless-gpt
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-gpt
+    - paperless-ngx
+    - ocr
+    - llm
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-gpt
+    sources:
+    - https://github.com/icereed/paperless-gpt
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.3.0/paperless-gpt-0.3.0.tgz
+    version: 0.3.0
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: added
           description: Optional ingress (ingress.*) for cert-manager and authenticating proxy integration
       artifacthub.io/images: |
         - name: paperless-gpt
@@ -932,4 +969,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-10-11T17:44:10.792895915Z"
+generated: "2026-10-11T17:47:02.370353162Z"
