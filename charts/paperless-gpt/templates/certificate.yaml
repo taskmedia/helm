@@ -1,0 +1,16 @@
+{{- if and .Values.ingressRoute.enabled .Values.ingressRoute.tls.certificate.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: "{{ include "paperlessgpt.fullname" . }}"
+  labels:
+    {{- include "paperlessgpt.labels" . | nindent 4 }}
+spec:
+  secretName: {{ required "ingressRoute.tls.secretName is required for the certificate" .Values.ingressRoute.tls.secretName }}
+  dnsNames:
+    - {{ required "ingressRoute.host is required" .Values.ingressRoute.host | quote }}
+  issuerRef:
+    name: {{ required "ingressRoute.tls.certificate.issuerRef.name is required" .Values.ingressRoute.tls.certificate.issuerRef.name }}
+    kind: {{ .Values.ingressRoute.tls.certificate.issuerRef.kind }}
+    group: {{ .Values.ingressRoute.tls.certificate.issuerRef.group }}
+{{- end }}

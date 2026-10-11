@@ -93,6 +93,43 @@ ingress:
     # secretName enables TLS for ingress.host (certificate e.g. created by cert-manager)
     secretName: ""
 
+# ingressRoute exposes the service via a Traefik IngressRoute CRD (alternative
+# to ingress). The IngressRoute cannot trigger cert-manager's ingress-shim, so
+# the chart can create the Certificate itself (tls.certificate).
+# paperless-gpt has no built-in authentication: add an authenticating
+# middleware (e.g. authentik forward-auth).
+# Example:
+#   enabled: true
+#   host: gpt.example.com
+#   middlewares:
+#     - name: proxy
+#       namespace: authentik
+#   tls:
+#     secretName: paperless-gpt-tls
+#     certificate:
+#       enabled: true
+#       issuerRef:
+#         name: letsencrypt-prod
+ingressRoute:
+  enabled: false
+  annotations: {}
+  entryPoints:
+    - websecure
+  host: ""
+  # middlewares is a list of Traefik middleware references (name, optional namespace)
+  middlewares: []
+  tls:
+    # secretName enables TLS for ingressRoute.host
+    secretName: ""
+    # certificate creates a cert-manager Certificate for ingressRoute.host
+    # stored in tls.secretName
+    certificate:
+      enabled: false
+      issuerRef:
+        name: ""
+        kind: ClusterIssuer
+        group: cert-manager.io
+
 # runs as non-root; the entrypoint then skips PUID/PGID handling
 podSecurityContext:
   runAsNonRoot: true

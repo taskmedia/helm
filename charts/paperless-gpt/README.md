@@ -74,6 +74,29 @@ ingress:
     secretName: paperless-gpt-tls
 ```
 
+## IngressRoute
+
+As an alternative to the `Ingress`, the chart can render a Traefik `IngressRoute` (CRD). Because
+cert-manager's ingress-shim does not handle `IngressRoute`, the chart can also create the
+`Certificate` (example with an authentik forward-auth middleware):
+
+```yaml
+ingressRoute:
+  enabled: true
+  host: gpt.example.com
+  middlewares:
+    - name: proxy
+      namespace: authentik
+  tls:
+    secretName: paperless-gpt-tls
+    certificate:
+      enabled: true
+      issuerRef:
+        name: letsencrypt-prod
+```
+
+Requires the Traefik (and, for the certificate, cert-manager) CRDs in the cluster.
+
 ## Notes
 
 - Runs a single replica with the `Recreate` strategy: state is a local SQLite database.
