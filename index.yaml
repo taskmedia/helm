@@ -1,6 +1,43 @@
 apiVersion: v1
 entries:
   ipsec-vpn-server:
+  - annotations:
+      artifacthub.io/category: networking
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add Artifact Hub metadata (category, links, images)
+      artifacthub.io/images: |
+        - name: ipsec-vpn-server
+          image: hwdsl2/ipsec-vpn-server:latest
+        - name: init
+          image: bash:alpine3.15
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server
+    apiVersion: v2
+    appVersion: latest
+    created: "2026-10-11T17:39:07.719045353Z"
+    description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
+    digest: 187539d6c5eb79c57173913e3b2a7aacfc47c9141d47bb83dfea5a04b5a8e549
+    home: https://helm.task.media/ipsec-vpn-server
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - vpn
+    - ipsec
+    - traefik
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: ipsec-vpn-server
+    sources:
+    - https://github.com/hwdsl2/docker-ipsec-vpn-server
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/ipsec-vpn-server-2.2.1/ipsec-vpn-server-2.2.1.tgz
+    version: 2.2.1
   - apiVersion: v2
     appVersion: latest
     created: "2026-09-10T07:45:33.727041194Z"
@@ -232,6 +269,41 @@ entries:
     - https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.1.0/paperless-gpt-0.1.0.tgz
     version: 0.1.0
   paperless-ngx-backup:
+  - annotations:
+      artifacthub.io/category: storage
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add Artifact Hub metadata (category, links, images)
+      artifacthub.io/images: |
+        - name: kubectl-gpg-ncftp
+          image: ghcr.io/taskmedia/kubectl-gpg-ncftp:main
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-backup
+    apiVersion: v2
+    created: "2026-10-11T17:39:08.077534737Z"
+    description: Backup paperless-ngx via K8s cronjob to FTP
+    digest: 61a35b06173ea647e41f40a18fc40c8a4216a0e6bd05e2c48d46a5c82b00206f
+    home: https://helm.task.media/paperlessngx-backup
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - gpg
+    - backup
+    - document exporter
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-ngx-backup
+    sources:
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.2/paperless-ngx-backup-1.1.2.tgz
+    version: 1.1.2
   - apiVersion: v2
     created: "2026-10-06T20:00:33.503640588Z"
     description: Backup paperless-ngx via K8s cronjob to FTP
@@ -393,6 +465,43 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz
     version: 0.1.3
   paperlessngx-ftp-bridge:
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add Artifact Hub metadata (category, links, images)
+      artifacthub.io/images: |
+        - name: paperlessngx-ftp-bridge
+          image: ghcr.io/taskmedia/paperlessngx-ftp-bridge-image:v2.1.1
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2026-10-11T17:39:08.259349079Z"
+    description: A Helm chart for an embedded FTP/FTPS server that forwards uploaded
+      files to paperless-ngx
+    digest: 150e42c6e294a301fde32acb5104ea1c49668a30b38ca27ac1d1e680b5983442
+    home: https://helm.task.media/paperlessngx-ftp-bridge
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - upload
+    - api
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperlessngx-ftp-bridge
+    sources:
+    - https://github.com/taskmedia/paperlessngx-ftp-bridge
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperlessngx-ftp-bridge-2.0.2/paperlessngx-ftp-bridge-2.0.2.tgz
+    version: 2.0.2
   - apiVersion: v2
     appVersion: 2.1.1
     created: "2026-10-07T19:30:09.416049797Z"
@@ -618,6 +727,46 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperlessngx-ftp-bridge-0.1.4.tgz
     version: 0.1.4
   vpn-ios-profile:
+  - annotations:
+      artifacthub.io/category: networking
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add Artifact Hub metadata (category, links, images)
+      artifacthub.io/images: |
+        - name: nginx
+          image: nginxinc/nginx-unprivileged
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile
+    apiVersion: v2
+    appVersion: latest
+    created: "2026-10-11T17:39:08.423992796Z"
+    dependencies:
+    - alias: vpnserver
+      name: ipsec-vpn-server
+      repository: https://helm.task.media/
+      version: 2.2.0
+    description: Deploy a VPN server in K8s with provided iOS profile
+    digest: 0641edc5dbce21cb3cf7059881fd18cc32ce9f93fe65cb8a4c41b5a12a32c56f
+    home: https://helm.task.media/vpn-ios-profile/
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - vpn
+    - ipsec
+    - ios
+    - mobileconfig
+    maintainers:
+    - name: taskmedia
+      url: https://task.media
+    name: vpn-ios-profile
+    sources:
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/vpn-ios-profile-0.3.2/vpn-ios-profile-0.3.2.tgz
+    version: 0.3.2
   - apiVersion: v2
     appVersion: latest
     created: "2026-09-10T07:45:33.734897183Z"
@@ -746,4 +895,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-10-11T17:24:59.090044738Z"
+generated: "2026-10-11T17:39:08.424059674Z"
