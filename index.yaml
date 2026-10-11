@@ -244,6 +244,43 @@ entries:
     - https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-1.0.1.tgz
     version: 1.0.1
   paperless-gpt:
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: added
+          description: Optional ingress (ingress.*) for cert-manager and authenticating proxy integration
+      artifacthub.io/images: |
+        - name: paperless-gpt
+          image: icereed/paperless-gpt:v0.29.0
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperless-gpt
+    apiVersion: v2
+    appVersion: 0.29.0
+    created: "2026-10-11T17:44:10.792819431Z"
+    description: A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant
+      for paperless-ngx
+    digest: 84a4fd9124e625cb8f07145003250ea941aba19a58bc16920e1299f792e413a8
+    home: https://helm.task.media/paperless-gpt
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-gpt
+    - paperless-ngx
+    - ocr
+    - llm
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-gpt
+    sources:
+    - https://github.com/icereed/paperless-gpt
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.2.0/paperless-gpt-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 0.29.0
     created: "2026-10-11T17:24:59.089995786Z"
@@ -895,4 +932,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-10-11T17:39:08.424059674Z"
+generated: "2026-10-11T17:44:10.792895915Z"
