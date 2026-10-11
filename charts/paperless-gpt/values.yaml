@@ -24,10 +24,16 @@ paperless:
 
 # config contains plain environment variables, see
 # https://github.com/icereed/paperless-gpt#configuration
-# Example:
+# Example (OpenAI):
 #   LLM_PROVIDER: openai
 #   LLM_MODEL: gpt-4o
+# Example (Ollama):
+#   LLM_PROVIDER: ollama
+#   LLM_MODEL: qwen3:8b
+#   OLLAMA_HOST: http://ollama:11434
 #   OCR_PROVIDER: llm
+#   VISION_LLM_PROVIDER: ollama
+#   VISION_LLM_MODEL: minicpm-v
 config: {}
 
 # secretConfig contains sensitive environment variables (e.g. OPENAI_API_KEY)

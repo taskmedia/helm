@@ -31,6 +31,28 @@ config:
 existingSecret: paperless-gpt
 ```
 
+Example with a local [Ollama](https://ollama.com/) instance (no API key needed, so no secret for the LLM):
+
+```yaml
+paperless:
+  baseUrl: http://paperless-ngx:8000
+  apiTokenExistingSecret:
+    name: paperless-gpt
+    key: paperless-api-token
+
+config:
+  # metadata suggestions (title, tags, correspondent, ...)
+  LLM_PROVIDER: ollama
+  LLM_MODEL: qwen3:8b
+  OLLAMA_HOST: http://ollama.ollama.svc.cluster.local:11434
+  OLLAMA_CONTEXT_LENGTH: "8192"
+  TOKEN_LIMIT: "1000" # recommended for smaller models
+  # vision based OCR
+  OCR_PROVIDER: llm
+  VISION_LLM_PROVIDER: ollama
+  VISION_LLM_MODEL: minicpm-v
+```
+
 Any upstream [environment variable](https://github.com/icereed/paperless-gpt#configuration) can be
 set via `config` (plain), `secretConfig` (stored in a chart-managed secret) or `existingSecret`.
 
