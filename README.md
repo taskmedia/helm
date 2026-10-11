@@ -36,12 +36,12 @@ README is mirrored to `gh-pages`.
 
 | Chart | Version | Description | Released |
 |------|---------|-------------|----------|
-| ipsec-vpn-server | [2.2.0](https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-2.2.0.tgz) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | 2026-09-10 |
+| ipsec-vpn-server | [2.2.1](https://github.com/taskmedia/helm/releases/download/ipsec-vpn-server-2.2.1/ipsec-vpn-server-2.2.1.tgz) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | 2026-10-11 |
 | paperless-gpt | [0.1.0](https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.1.0/paperless-gpt-0.1.0.tgz) | A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant for paperless-ngx | 2026-10-11 |
-| paperless-ngx-backup | [1.1.1](https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.1/paperless-ngx-backup-1.1.1.tgz) | Backup paperless-ngx via K8s cronjob to FTP | 2026-10-06 |
+| paperless-ngx-backup | [1.1.2](https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.2/paperless-ngx-backup-1.1.2.tgz) | Backup paperless-ngx via K8s cronjob to FTP | 2026-10-11 |
 | paperless-ngx-ftp-bridge | [0.1.3](https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz) | A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx | 2024-10-29 |
-| paperlessngx-ftp-bridge | [2.0.1](https://github.com/taskmedia/helm/releases/download/paperlessngx-ftp-bridge-2.0.1/paperlessngx-ftp-bridge-2.0.1.tgz) | A Helm chart for an embedded FTP/FTPS server that forwards uploaded files to paperless-ngx | 2026-10-07 |
-| vpn-ios-profile | [0.3.1](https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.3.1.tgz) | Deploy a VPN server in K8s with provided iOS profile | 2026-09-10 |
+| paperlessngx-ftp-bridge | [2.0.2](https://github.com/taskmedia/helm/releases/download/paperlessngx-ftp-bridge-2.0.2/paperlessngx-ftp-bridge-2.0.2.tgz) | A Helm chart for an embedded FTP/FTPS server that forwards uploaded files to paperless-ngx | 2026-10-11 |
+| vpn-ios-profile | [0.3.2](https://github.com/taskmedia/helm/releases/download/vpn-ios-profile-0.3.2/vpn-ios-profile-0.3.2.tgz) | Deploy a VPN server in K8s with provided iOS profile | 2026-10-11 |
 
 <!-- end charts -->
 
