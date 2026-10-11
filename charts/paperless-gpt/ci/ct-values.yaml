@@ -1,0 +1,10 @@
+# Minimal overrides so `ct lint` and `ct install` can render the chart.
+paperless:
+  apiToken: ct-test-token
+
+config:
+  LLM_PROVIDER: openai
+  LLM_MODEL: gpt-4o
+
+secretConfig:
+  OPENAI_API_KEY: ct-test-key

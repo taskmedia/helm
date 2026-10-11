@@ -1,0 +1,96 @@
+# image used for paperless-gpt (official upstream image)
+image:
+  repository: icereed/paperless-gpt
+  # tag defaults to v<appVersion>
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# paperless-ngx instance to connect to
+paperless:
+  # url with protocol but no API endpoint
+  baseUrl: "http://paperless-ngx:8000"
+  # publicUrl is used for links in the UI (optional)
+  publicUrl: ""
+  # apiToken for paperless-ngx
+  apiToken: ""
+  # apiTokenExistingSecret is used to reference an existing secret in the same namespace
+  apiTokenExistingSecret:
+    name: ""
+    key: ""
+
+# config contains plain environment variables, see
+# https://github.com/icereed/paperless-gpt#configuration
+# Example:
+#   LLM_PROVIDER: openai
+#   LLM_MODEL: gpt-4o
+#   OCR_PROVIDER: llm
+config: {}
+
+# secretConfig contains sensitive environment variables (e.g. OPENAI_API_KEY)
+# stored in a secret created by this chart
+secretConfig: {}
+
+# existingSecret references a secret in the same namespace whose keys are all
+# injected as environment variables (e.g. OPENAI_API_KEY, ANTHROPIC_API_KEY)
+existingSecret: ""
+
+# extraEnv allows additional env entries (e.g. valueFrom references)
+extraEnv: []
+
+# persistence for prompts, UI settings and history (undo, OCR run log)
+# Without it all of these are lost when the pod is recreated.
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+  annotations: {}
+
+# extraVolumes and extraVolumeMounts can be used e.g. for hOCR/PDF output or
+# a Google Document AI credentials file
+extraVolumes: []
+extraVolumeMounts: []
+
+# paperless-gpt has no built-in authentication: do not expose the service
+# without an authenticating proxy in front of it.
+service:
+  type: ClusterIP
+  port: 8080
+  annotations: {}
+
+# runs as non-root; the entrypoint then skips PUID/PGID handling
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 10001
+  runAsGroup: 10001
+  fsGroup: 10001
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 64Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
