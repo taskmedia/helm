@@ -13,8 +13,24 @@ sources:
   - https://github.com/hwdsl2/docker-ipsec-vpn-server
   - https://github.com/taskmedia/helm
 type: application
-version: 2.2.0
+version: 2.2.1
 # hwdsl2/docker-ipsec-vpn-server does not provide versioning
 # see: https://github.com/hwdsl2/docker-ipsec-vpn-server/issues/98
 appVersion: "latest"
 icon: https://media.task.media/images/logo.png
+
+annotations:
+  artifacthub.io/category: networking
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server
+  artifacthub.io/images: |
+    - name: ipsec-vpn-server
+      image: hwdsl2/ipsec-vpn-server:latest
+    - name: init
+      image: bash:alpine3.15
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Add Artifact Hub metadata (category, links, images)

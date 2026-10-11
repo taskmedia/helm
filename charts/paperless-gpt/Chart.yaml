@@ -18,3 +18,17 @@ type: application
 version: 0.1.0
 # upstream image tag without the leading v
 appVersion: "0.29.0"
+
+annotations:
+  artifacthub.io/category: skip-prediction
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/paperless-gpt
+  artifacthub.io/images: |
+    - name: paperless-gpt
+      image: icereed/paperless-gpt:v0.29.0
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial chart for paperless-gpt

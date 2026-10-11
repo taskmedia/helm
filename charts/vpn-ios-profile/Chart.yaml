@@ -16,7 +16,7 @@ sources:
 
 type: application
 
-version: 0.3.1
+version: 0.3.2
 
 appVersion: "latest"
 
@@ -27,3 +27,17 @@ dependencies:
   repository: "https://helm.task.media/"
 
 icon: https://media.task.media/images/logo.png
+
+annotations:
+  artifacthub.io/category: networking
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile
+  artifacthub.io/images: |
+    - name: nginx
+      image: nginxinc/nginx-unprivileged
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Add Artifact Hub metadata (category, links, images)

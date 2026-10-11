@@ -15,6 +15,20 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 2.0.1
+version: 2.0.2
 # app image tag (v<appVersion>); bumped manually when the bridge repo releases
 appVersion: "2.1.1"
+
+annotations:
+  artifacthub.io/category: skip-prediction
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge
+  artifacthub.io/images: |
+    - name: paperlessngx-ftp-bridge
+      image: ghcr.io/taskmedia/paperlessngx-ftp-bridge-image:v2.1.1
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Add Artifact Hub metadata (category, links, images)
