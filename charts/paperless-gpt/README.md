@@ -4,8 +4,8 @@ Helm chart for [paperless-gpt](https://github.com/icereed/paperless-gpt), an LLM
 metadata assistant for [paperless-ngx](https://docs.paperless-ngx.com/). It uses the official
 upstream image `icereed/paperless-gpt`.
 
-> **paperless-gpt has no built-in authentication.** The chart creates a `ClusterIP` service only;
-> put an authenticating proxy (e.g. forward-auth) in front of any ingress.
+> **paperless-gpt has no built-in authentication.** The ingress is disabled by default; always put
+> an authenticating proxy (e.g. forward-auth) in front of it.
 
 ## Usage
 
@@ -55,6 +55,24 @@ config:
 
 Any upstream [environment variable](https://github.com/icereed/paperless-gpt#configuration) can be
 set via `config` (plain), `secretConfig` (stored in a chart-managed secret) or `existingSecret`.
+
+## Ingress
+
+Optional standard `Ingress`; with the cert-manager annotation the TLS certificate is created
+automatically (example for Traefik, cert-manager and an authentik forward-auth middleware):
+
+```yaml
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-proxy@kubernetescrd
+  host: gpt.example.com
+  tls:
+    secretName: paperless-gpt-tls
+```
 
 ## Notes
 

@@ -70,6 +70,29 @@ service:
   port: 8080
   annotations: {}
 
+# ingress exposes the service. paperless-gpt has no built-in authentication:
+# always add an authenticating proxy (e.g. forward-auth middleware) in front.
+# Example (Traefik + cert-manager + authentik):
+#   enabled: true
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-prod
+#     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#     traefik.ingress.kubernetes.io/router.tls: "true"
+#     traefik.ingress.kubernetes.io/router.middlewares: authentik-proxy@kubernetescrd
+#   host: gpt.example.com
+#   tls:
+#     secretName: paperless-gpt-tls
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  host: ""
+  path: /
+  pathType: Prefix
+  tls:
+    # secretName enables TLS for ingress.host (certificate e.g. created by cert-manager)
+    secretName: ""
+
 # runs as non-root; the entrypoint then skips PUID/PGID handling
 podSecurityContext:
   runAsNonRoot: true
