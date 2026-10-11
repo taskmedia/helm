@@ -15,7 +15,7 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 0.1.0
+version: 0.2.0
 # upstream image tag without the leading v
 appVersion: "0.29.0"
 
@@ -31,4 +31,4 @@ annotations:
       image: icereed/paperless-gpt:v0.29.0
   artifacthub.io/changes: |
     - kind: added
-      description: Initial chart for paperless-gpt
+      description: Optional ingress (ingress.*) for cert-manager and authenticating proxy integration
