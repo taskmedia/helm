@@ -1,0 +1,36 @@
+apiVersion: v2
+name: outprint
+description: Outprint for Outline - Gateway, network-less Worker and injector
+home: https://helm.task.media/outprint
+keywords:
+  - outprint
+  - outline
+  - pdf
+  - latex
+maintainers:
+  - name: fty4
+    url: https://github.com/fty4
+sources:
+  - https://github.com/taskmedia/outprint
+  - https://github.com/taskmedia/helm
+icon: https://media.task.media/images/logo.png
+type: application
+version: 0.1.0
+# outprint release tag without the leading v
+appVersion: "0.1.0"
+
+annotations:
+  artifacthub.io/category: skip-prediction
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/taskmedia/helm/issues
+    - name: source
+      url: https://github.com/taskmedia/helm/tree/main/charts/outprint
+  artifacthub.io/images: |
+    - name: outprint
+      image: ghcr.io/taskmedia/outprint:0.1.0
+    - name: outprint-injector
+      image: ghcr.io/taskmedia/outprint-injector:0.1.0
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial chart for the Gateway, the Worker and the injector

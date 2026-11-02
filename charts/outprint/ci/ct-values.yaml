@@ -1,0 +1,3 @@
+# Minimal overrides so `ct lint` and `ct install` can render the chart.
+outline:
+  url: http://outline.example.invalid:3000
