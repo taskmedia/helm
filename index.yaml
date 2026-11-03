@@ -243,6 +243,45 @@ entries:
     urls:
     - https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-1.0.1.tgz
     version: 1.0.1
+  outprint:
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial chart for the Gateway, the Worker and the injector
+      artifacthub.io/images: |
+        - name: outprint
+          image: ghcr.io/taskmedia/outprint:1.0.0
+        - name: outprint-injector
+          image: ghcr.io/taskmedia/outprint-injector:1.0.0
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/outprint
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-11-03T21:05:02.284972333Z"
+    description: Outprint for Outline - Gateway, network-less Worker and injector
+    digest: 9d07900a1d90954d4148cabd3a34a8d541ab0ce6040a866eb39d2110ced576cb
+    home: https://helm.task.media/outprint
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - outprint
+    - outline
+    - pdf
+    - latex
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: outprint
+    sources:
+    - https://github.com/taskmedia/outprint
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/outprint-1.0.0/outprint-1.0.0.tgz
+    version: 1.0.0
   paperless-gpt:
   - annotations:
       artifacthub.io/category: skip-prediction
@@ -969,4 +1008,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-10-11T17:47:02.370353162Z"
+generated: "2026-11-03T21:05:02.285041232Z"
