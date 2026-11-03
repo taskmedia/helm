@@ -1,5 +1,9 @@
 # taskmedia/helm
 
+<link rel="icon" type="image/svg+xml" href="https://media.task.media/images/favicon/safari-pinned-tab.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://media.task.media/images/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Task Media Helm Charts">
+
 [![GitHub Repo](https://img.shields.io/badge/GitHub-taskmedia%2Fhelm-181717?logo=github)](https://github.com/taskmedia/helm)
 [![Release Charts](https://github.com/taskmedia/helm/actions/workflows/release.yaml/badge.svg)](https://github.com/taskmedia/helm/actions/workflows/release.yaml)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/taskmedia)](https://artifacthub.io/packages/search?repo=taskmedia)
