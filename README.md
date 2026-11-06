@@ -41,7 +41,7 @@ README is mirrored to `gh-pages`.
 | Chart | Version | Description | Released |
 |------|---------|-------------|----------|
 | ipsec-vpn-server | [2.2.1](https://github.com/taskmedia/helm/releases/download/ipsec-vpn-server-2.2.1/ipsec-vpn-server-2.2.1.tgz) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | 2026-10-11 |
-| outprint | [1.1.0](https://github.com/taskmedia/helm/releases/download/outprint-1.1.0/outprint-1.1.0.tgz) | Outprint for Outline - Gateway, network-less Worker and injector | 2026-11-06 |
+| outprint | [1.1.1](https://github.com/taskmedia/helm/releases/download/outprint-1.1.1/outprint-1.1.1.tgz) | Outprint for Outline - Gateway, network-less Worker and injector | 2026-11-06 |
 | paperless-gpt | [0.3.0](https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.3.0/paperless-gpt-0.3.0.tgz) | A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant for paperless-ngx | 2026-10-11 |
 | paperless-ngx-backup | [1.1.2](https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.2/paperless-ngx-backup-1.1.2.tgz) | Backup paperless-ngx via K8s cronjob to FTP | 2026-10-11 |
 | paperless-ngx-ftp-bridge | [0.1.3](https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz) | A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx | 2024-10-29 |
