@@ -1,5 +1,9 @@
 # taskmedia/helm
 
+<link rel="icon" type="image/svg+xml" href="https://media.task.media/images/favicon/safari-pinned-tab.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://media.task.media/images/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Task Media Helm Charts">
+
 [![GitHub Repo](https://img.shields.io/badge/GitHub-taskmedia%2Fhelm-181717?logo=github)](https://github.com/taskmedia/helm)
 [![Release Charts](https://github.com/taskmedia/helm/actions/workflows/release.yaml/badge.svg)](https://github.com/taskmedia/helm/actions/workflows/release.yaml)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/taskmedia)](https://artifacthub.io/packages/search?repo=taskmedia)
@@ -37,7 +41,7 @@ README is mirrored to `gh-pages`.
 | Chart | Version | Description | Released |
 |------|---------|-------------|----------|
 | ipsec-vpn-server | [2.2.1](https://github.com/taskmedia/helm/releases/download/ipsec-vpn-server-2.2.1/ipsec-vpn-server-2.2.1.tgz) | Deploy IPsec VPN server inside K8s with optional sealed-secrets | 2026-10-11 |
-| outprint | [1.0.0](https://github.com/taskmedia/helm/releases/download/outprint-1.0.0/outprint-1.0.0.tgz) | Outprint for Outline - Gateway, network-less Worker and injector | 2026-11-03 |
+| outprint | [1.1.0](https://github.com/taskmedia/helm/releases/download/outprint-1.1.0/outprint-1.1.0.tgz) | Outprint for Outline - Gateway, network-less Worker and injector | 2026-11-06 |
 | paperless-gpt | [0.3.0](https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.3.0/paperless-gpt-0.3.0.tgz) | A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant for paperless-ngx | 2026-10-11 |
 | paperless-ngx-backup | [1.1.2](https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.2/paperless-ngx-backup-1.1.2.tgz) | Backup paperless-ngx via K8s cronjob to FTP | 2026-10-11 |
 | paperless-ngx-ftp-bridge | [0.1.3](https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz) | A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx | 2024-10-29 |
