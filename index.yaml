@@ -247,6 +247,44 @@ entries:
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
+        - kind: changed
+          description: Bump Outprint to 1.0.1
+      artifacthub.io/images: |
+        - name: outprint
+          image: ghcr.io/taskmedia/outprint:1.0.1
+        - name: outprint-injector
+          image: ghcr.io/taskmedia/outprint-injector:1.0.1
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/outprint
+    apiVersion: v2
+    appVersion: 1.0.1
+    created: "2026-11-06T23:59:29.590813088Z"
+    description: Outprint for Outline - Gateway, network-less Worker and injector
+    digest: 428cec4b867ad0f16b102402983d1bd3624064454b06d3f4a988d8414abaa851
+    home: https://helm.task.media/outprint
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - outprint
+    - outline
+    - pdf
+    - latex
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: outprint
+    sources:
+    - https://github.com/taskmedia/outprint
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/outprint-1.1.1/outprint-1.1.1.tgz
+    version: 1.1.1
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
         - kind: added
           description: Optional Traefik IngressRoute (ingressRoute.*) for the injector with optional cert-manager Certificate
       artifacthub.io/images: |
@@ -1083,4 +1121,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-11-06T22:30:02.85684708Z"
+generated: "2026-11-06T23:59:29.590866808Z"
