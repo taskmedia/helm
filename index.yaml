@@ -619,6 +619,43 @@ entries:
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
+        - kind: fixed
+          description: Only create the Secret when an inline password is configured
+      artifacthub.io/images: |
+        - name: paperlessngx-ftp-bridge
+          image: ghcr.io/taskmedia/paperlessngx-ftp-bridge-image:v2.1.1
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2026-11-06T22:30:02.856804757Z"
+    description: A Helm chart for an embedded FTP/FTPS server that forwards uploaded
+      files to paperless-ngx
+    digest: 00ed650cb151b4dcecc3c172f5728b72aebe05e738465c7708beb93b5b8dd9cb
+    home: https://helm.task.media/paperlessngx-ftp-bridge
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - upload
+    - api
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperlessngx-ftp-bridge
+    sources:
+    - https://github.com/taskmedia/paperlessngx-ftp-bridge
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperlessngx-ftp-bridge-2.0.3/paperlessngx-ftp-bridge-2.0.3.tgz
+    version: 2.0.3
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
         - kind: changed
           description: Add Artifact Hub metadata (category, links, images)
       artifacthub.io/images: |
@@ -1046,4 +1083,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-11-06T22:05:38.106550272Z"
+generated: "2026-11-06T22:30:02.85684708Z"
