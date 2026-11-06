@@ -45,6 +45,18 @@ jobs:
           mark_as_latest: false
           skip_existing: true
 
+      - name: Add changelog to release notes
+        if: steps.cr.outputs.changed_charts != ''
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GH_REPO: "${{ github.repository }}"
+          CHANGED_CHARTS: "${{ steps.cr.outputs.changed_charts }}"
+        run: |
+          IFS=',' read -ra charts <<< "$CHANGED_CHARTS"
+          for chart in "${charts[@]}"; do
+            ./scripts/release-notes.sh "$chart"
+          done
+
       # Mirror main's README onto gh-pages, then inject the chart table from
       # index.yaml into its start/end markers. main is the single source of
       # truth for the static content (title, badges, usage); gh-pages never
