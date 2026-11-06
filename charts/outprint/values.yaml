@@ -112,3 +112,30 @@ injector:
     annotations: {}
     hosts: []   # for example [wiki.example.test]
     tls: []
+
+# Optional Traefik IngressRoute (CRD) for the injector. The whole host goes to
+# the injector, which forwards /pdf/* to the Gateway and everything else to
+# Outline, so no prefix middleware is needed. Needs injector.enabled. Use
+# either this or injector.ingress, not both.
+ingressRoute:
+  enabled: false
+  annotations: {}
+  entryPoints:
+    - websecure
+  host: ""
+  # Set it higher than the priority of any other router for the same host,
+  # for example Outline's own Ingress. Empty = Traefik's default.
+  priority: ""
+  # middlewares is a list of Traefik middleware references (name, optional namespace)
+  middlewares: []
+  tls:
+    # secretName enables TLS for ingressRoute.host
+    secretName: ""
+    # certificate creates a cert-manager Certificate for ingressRoute.host
+    # stored in tls.secretName
+    certificate:
+      enabled: false
+      issuerRef:
+        name: ""
+        kind: ClusterIssuer
+        group: cert-manager.io

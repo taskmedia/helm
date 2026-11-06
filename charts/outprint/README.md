@@ -23,3 +23,27 @@ Gateway or the Worker. For PDF by link only, set `injector.enabled=false`.
 ## Values
 
 See [values.yaml](values.yaml); every option is commented. `outline.url` is required.
+
+## IngressRoute
+
+As an alternative to `injector.ingress`, the chart can render a Traefik `IngressRoute` (CRD) that
+sends the whole host to the injector. The injector forwards `/pdf/*` to the Gateway and everything
+else to Outline, so no prefix middleware is needed. Move the host off Outline's own Ingress first;
+two routers must not claim it. cert-manager's ingress-shim does not handle `IngressRoute`, so the
+chart can also create the `Certificate`:
+
+```yaml
+outline:
+  url: http://outline.outline.svc:3000
+ingressRoute:
+  enabled: true
+  host: wiki.example.com
+  tls:
+    secretName: outprint-tls
+    certificate:
+      enabled: true
+      issuerRef:
+        name: letsencrypt-prod
+```
+
+Needs `injector.enabled` and the Traefik (and, for the certificate, cert-manager) CRDs in the cluster.
