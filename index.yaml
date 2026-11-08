@@ -973,29 +973,6 @@ entries:
     urls:
     - https://helm.task.media/paperlessngx-backup/paperless-ngx-backup-0.1.1.tgz
     version: 0.1.1
-  paperless-ngx-ftp-bridge:
-  - apiVersion: v2
-    created: "2024-10-29T19:23:02.242425177Z"
-    description: A Helm chart to upload files to from a FTP (TLS) server to paperless-ngx
-    digest: 674ee3a30cc85040c82b0c06cbdaf43b7bd73d584148af07e12903d836a7a9e0
-    home: https://helm.task.media/paperlessngx-ftp-bridge
-    icon: https://media.task.media/images/logo.png
-    keywords:
-    - paperless-ngx
-    - ftp
-    - upload
-    - api
-    maintainers:
-    - name: fty4
-      url: https://github.com/fty4
-    name: paperless-ngx-ftp-bridge
-    sources:
-    - https://github.com/taskmedia/helm_paperlessngx-ftp-bridge
-    - https://github.com/taskmedia/helm
-    type: application
-    urls:
-    - https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz
-    version: 0.1.3
   paperlessngx-ftp-bridge:
   - annotations:
       artifacthub.io/category: skip-prediction
