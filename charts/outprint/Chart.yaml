@@ -15,9 +15,9 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 1.2.0
+version: 1.2.1
 # outprint release tag without the leading v
-appVersion: "1.0.1"
+appVersion: "1.1.0"
 
 annotations:
   artifacthub.io/category: skip-prediction
@@ -28,11 +28,9 @@ annotations:
       url: https://github.com/taskmedia/helm/tree/main/charts/outprint
   artifacthub.io/images: |
     - name: outprint
-      image: ghcr.io/taskmedia/outprint:1.0.1
+      image: ghcr.io/taskmedia/outprint:1.1.0
     - name: outprint-injector
-      image: ghcr.io/taskmedia/outprint-injector:1.0.1
+      image: ghcr.io/taskmedia/outprint-injector:1.1.0
   artifacthub.io/changes: |
-    - kind: added
-      description: packages.git, packages.image and packages.existingClaim mount your own Template and Configuration packages
-    - kind: added
-      description: extraVolumes and extraVolumeMounts for Gateway and Worker
+    - kind: changed
+      description: Bump Outprint to 1.1.0
