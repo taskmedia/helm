@@ -27,6 +27,7 @@ initContainers:
     volumeMounts:
       - { name: packages, mountPath: /packages }
       - { name: scripts, mountPath: /scripts, readOnly: true }
+      - { name: state, mountPath: /state }
       {{- range $sources }}
       {{- if .sshKeySecret }}
       - { name: {{ printf "ssh-%s" .name }}, mountPath: {{ printf "/ssh/%s" .name | quote }}, readOnly: true }
@@ -47,6 +48,7 @@ initContainers:
     volumeMounts:
       - { name: packages, mountPath: /packages, readOnly: true }
       - { name: scripts, mountPath: /scripts, readOnly: true }
+      - { name: state, mountPath: /state, readOnly: true }
       - { name: service-config, mountPath: /etc/outprint, readOnly: true }
       - { name: tmp, mountPath: /tmp }
 containers:
@@ -72,6 +74,7 @@ containers:
     volumeMounts:
       - { name: packages, mountPath: /packages }
       - { name: scripts, mountPath: /scripts, readOnly: true }
+      - { name: state, mountPath: /state, readOnly: true }
       - { name: tmp, mountPath: /tmp }
 volumes:
   - name: packages
@@ -85,6 +88,9 @@ volumes:
       name: {{ include "outprint.fullname" . }}-service
   - name: tmp
     emptyDir: { sizeLimit: 64Mi }
+  # What this pod has prepared: the id of the revision for validate and activate.
+  - name: state
+    emptyDir: { sizeLimit: 1Mi }
   {{- range $sources }}
   {{- if .sshKeySecret }}
   - name: {{ printf "ssh-%s" .name }}

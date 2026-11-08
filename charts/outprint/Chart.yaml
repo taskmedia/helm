@@ -15,7 +15,7 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 1.3.1
+version: 1.3.2
 # outprint release tag without the leading v
 appVersion: "1.1.0"
 
@@ -32,5 +32,5 @@ annotations:
     - name: outprint-injector
       image: ghcr.io/taskmedia/outprint-injector:1.1.0
   artifacthub.io/changes: |
-    - kind: changed
-      description: Bump Outprint to 1.1.0
+    - kind: fixed
+      description: Only one package sync works on the volume at a time; the first Job and the CronJob could overlap
