@@ -15,7 +15,7 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 1.1.2
+version: 1.1.3
 
 annotations:
   artifacthub.io/category: storage
@@ -29,4 +29,4 @@ annotations:
       image: ghcr.io/taskmedia/kubectl-gpg-ncftp:main
   artifacthub.io/changes: |
     - kind: changed
-      description: Add Artifact Hub metadata (category, links, images)
+      description: Set metadata.namespace to the release namespace on all resources

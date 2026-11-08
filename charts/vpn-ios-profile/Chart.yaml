@@ -16,7 +16,7 @@ sources:
 
 type: application
 
-version: 0.3.2
+version: 0.3.3
 
 appVersion: "latest"
 
@@ -40,4 +40,4 @@ annotations:
       image: nginxinc/nginx-unprivileged
   artifacthub.io/changes: |
     - kind: changed
-      description: Add Artifact Hub metadata (category, links, images)
+      description: Set metadata.namespace to the release namespace on all resources

@@ -13,7 +13,7 @@ sources:
   - https://github.com/hwdsl2/docker-ipsec-vpn-server
   - https://github.com/taskmedia/helm
 type: application
-version: 2.2.1
+version: 2.2.2
 # hwdsl2/docker-ipsec-vpn-server does not provide versioning
 # see: https://github.com/hwdsl2/docker-ipsec-vpn-server/issues/98
 appVersion: "latest"
@@ -33,4 +33,4 @@ annotations:
       image: bash:alpine3.15
   artifacthub.io/changes: |
     - kind: changed
-      description: Add Artifact Hub metadata (category, links, images)
+      description: Set metadata.namespace to the release namespace on all resources

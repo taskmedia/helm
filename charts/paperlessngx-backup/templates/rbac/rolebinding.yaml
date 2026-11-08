@@ -2,6 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: "{{ include "plngxbackup.fullname" . }}"
+  namespace: {{ .Release.Namespace }}
 subjects:
   - kind: ServiceAccount
     name: "{{ include "plngxbackup.fullname" . }}"

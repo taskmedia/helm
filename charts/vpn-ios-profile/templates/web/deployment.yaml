@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "vpn-ios-profile.fullname" . }}-web
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "vpn-ios-profile.labels" . | nindent 4 }}
 spec:

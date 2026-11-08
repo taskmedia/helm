@@ -4,6 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ $name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
     app.kubernetes.io/component: worker
@@ -104,6 +105,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ $name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
     app.kubernetes.io/component: worker
@@ -123,6 +125,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: {{ $name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
     app.kubernetes.io/component: worker

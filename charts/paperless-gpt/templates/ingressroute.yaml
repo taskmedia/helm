@@ -4,6 +4,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: "{{ include "paperlessgpt.fullname" . }}"
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "paperlessgpt.labels" . | nindent 4 }}
   {{- with .Values.ingressRoute.annotations }}

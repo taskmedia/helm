@@ -4,6 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "outprint.fullname" . }}-service
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
 data:
