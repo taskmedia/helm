@@ -1,0 +1,124 @@
+{{- if eq (include "outprint.packagesSource" .) "git" }}
+{{- $git := .Values.packages.git -}}
+{{- $name := printf "%s-packages" (include "outprint.fullname" .) -}}
+{{- $syncImage := printf "%s:%s" $git.image.repository $git.image.tag -}}
+{{- $outprintImage := include "outprint.image" (dict "repository" .Values.image.repository "tag" .Values.image.tag "appVersion" .Chart.AppVersion) -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes: [{{ $git.persistence.accessMode }}]
+  {{- with $git.persistence.storageClass }}
+  storageClassName: {{ . | quote }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ $git.persistence.size }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+---
+# The sync Job may restart exactly the Gateway and the Worker, nothing else.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+rules:
+  - apiGroups: [apps]
+    resources: [deployments]
+    resourceNames:
+      - {{ printf "%s-gateway" (include "outprint.fullname" .) }}
+      - {{ printf "%s-worker" (include "outprint.fullname" .) }}
+    verbs: [get, patch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ $name }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ $name }}
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $name }}-sync
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+data:
+  sync.sh: |
+    {{- .Files.Get "files/packages-sync.sh" | nindent 4 }}
+  validate.sh: |
+    {{- .Files.Get "files/packages-validate.sh" | nindent 4 }}
+  activate.sh: |
+    {{- .Files.Get "files/packages-activate.sh" | nindent 4 }}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ $name }}-sync
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+spec:
+  schedule: {{ include "outprint.packagesSchedule" $git.interval | quote }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 600
+      template:
+        metadata:
+          labels:
+            {{- include "outprint.labels" . | nindent 12 }}
+            app.kubernetes.io/component: packages
+        spec:
+          {{- include "outprint.packagesSyncPod" . | nindent 10 }}
+---
+# First sync (and a sync after a change of url, ref, commit or path) without
+# waiting for the next CronJob tick. The name carries a hash of those values,
+# so a change creates a fresh Job.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ printf "%s-sync-%s" $name (printf "%s|%s|%s|%s" $git.url $git.ref $git.commit $git.path | sha256sum | trunc 8) }}
+  labels:
+    {{- include "outprint.labels" . | nindent 4 }}
+    app.kubernetes.io/component: packages
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      labels:
+        {{- include "outprint.labels" . | nindent 8 }}
+        app.kubernetes.io/component: packages
+    spec:
+      {{- include "outprint.packagesSyncPod" . | nindent 6 }}
+{{- end }}
