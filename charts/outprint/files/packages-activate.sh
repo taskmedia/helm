@@ -3,15 +3,15 @@
 set -eu
 
 PK=/packages
-[ -f "$PK/.pending" ] || { echo "no change"; exit 0; }
-sha="$(cat "$PK/.pending")"
+[ -f /state/pending ] || { echo "no change"; exit 0; }
+sha="$(cat /state/pending)"
 had_revision=false
 [ -f "$PK/.revision" ] && had_revision=true
 
 ln -sfn "rev-$sha" "$PK/.current.tmp"
 mv -T "$PK/.current.tmp" "$PK/current"
 printf '%s\n' "$sha" >"$PK/.revision"
-rm -f "$PK/.pending"
+rm -rf "$PK/.lock"
 echo "activated $sha"
 
 # newest first; the active revision is the newest
