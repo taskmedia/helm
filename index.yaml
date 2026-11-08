@@ -285,6 +285,44 @@ entries:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
         - kind: changed
+          description: Bump Outprint to 1.1.2
+      artifacthub.io/images: |
+        - name: outprint
+          image: ghcr.io/taskmedia/outprint:1.1.2
+        - name: outprint-injector
+          image: ghcr.io/taskmedia/outprint-injector:1.1.2
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/outprint
+    apiVersion: v2
+    appVersion: 1.1.2
+    created: "2026-11-08T22:17:06.179672635Z"
+    description: Outprint for Outline - Gateway, network-less Worker and injector
+    digest: abf5e450e95fd48c27385a916d4d0eb352519bb087e3839fc8b24bdf9c386588
+    home: https://helm.task.media/outprint
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - outprint
+    - outline
+    - pdf
+    - latex
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: outprint
+    sources:
+    - https://github.com/taskmedia/outprint
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/outprint-1.3.5/outprint-1.3.5.tgz
+    version: 1.3.5
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: changed
           description: Set metadata.namespace to the release namespace on all resources
       artifacthub.io/images: |
         - name: outprint
@@ -1518,4 +1556,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-11-08T20:58:24.83942311Z"
+generated: "2026-11-08T22:17:06.179803737Z"
