@@ -58,14 +58,42 @@ seccompProfile:
   type: RuntimeDefault
 {{- end -}}
 
+{{/*
+The Git sources as JSON: the shorthand packages.git (name "default") followed by
+packages.sources. Checks names and URLs.
+*/}}
+{{- define "outprint.packagesSources" -}}
+{{- $out := list -}}
+{{- $names := dict -}}
+{{- if .Values.packages.git.url -}}
+{{- $g := .Values.packages.git -}}
+{{- $out = append $out (dict "name" "default" "url" $g.url "ref" $g.ref "commit" $g.commit "path" (trimAll "/" $g.path) "sshKeySecret" $g.sshKeySecret) -}}
+{{- $_ := set $names "default" true -}}
+{{- end -}}
+{{- range .Values.packages.sources -}}
+{{- $name := required "packages.sources[].name is required" .name -}}
+{{- if not (regexMatch "^[a-z0-9][a-z0-9-]*$" $name) -}}
+{{- fail (printf "packages.sources: name %q must match ^[a-z0-9][a-z0-9-]*$" $name) -}}
+{{- end -}}
+{{- if hasKey $names $name -}}
+{{- fail (printf "packages.sources: name %q is used twice (the shorthand packages.git is named \"default\")" $name) -}}
+{{- end -}}
+{{- $_ := set $names $name true -}}
+{{- $g := required (printf "packages.sources[%s].git is required" $name) .git -}}
+{{- $url := required (printf "packages.sources[%s].git.url is required" $name) $g.url -}}
+{{- $out = append $out (dict "name" $name "url" $url "ref" (default "main" $g.ref) "commit" (default "" $g.commit) "path" (trimAll "/" (default "" $g.path)) "sshKeySecret" (default "" $g.sshKeySecret)) -}}
+{{- end -}}
+{{- toJson $out -}}
+{{- end -}}
+
 {{/* The packages source in use: git, image, existingClaim or empty. At most one may be set. */}}
 {{- define "outprint.packagesSource" -}}
 {{- $sources := list -}}
-{{- if .Values.packages.git.url }}{{ $sources = append $sources "git" }}{{ end -}}
+{{- if gt (len (fromJsonArray (include "outprint.packagesSources" .))) 0 }}{{ $sources = append $sources "git" }}{{ end -}}
 {{- if .Values.packages.image.reference }}{{ $sources = append $sources "image" }}{{ end -}}
 {{- if .Values.packages.existingClaim }}{{ $sources = append $sources "existingClaim" }}{{ end -}}
 {{- if gt (len $sources) 1 -}}
-{{- fail (printf "packages: set only one source, got %s" (join ", " $sources)) -}}
+{{- fail (printf "packages: set only one kind of source, got %s" (join ", " $sources)) -}}
 {{- end -}}
 {{- first (append $sources "") -}}
 {{- end -}}
