@@ -1,14 +1,34 @@
 # Resolve the ref of every source in /scripts/sources.json to a commit. If the
 # set of commits differs from the active revision, check every source out (Git
 # LFS included), merge the packages into /packages/rev-<id> and leave the id in
-# /packages/.pending for the validate and activate steps. Never touches the
-# active revision. Any failure (a ref that does not resolve, a pinned commit
+# /state/pending (private to this pod) for the validate and activate steps.
+# Never touches the active revision. Only one sync works on the volume at a
+# time: /packages/.lock is taken here and released by the activate step. Any failure (a ref that does not resolve, a pinned commit
 # that differs, a package name that two sources provide) stops here.
 set -eu
 
 PK=/packages
+STATE=/state
 SOURCES=/scripts/sources.json
-rm -f "$PK/.pending"
+LOCK="$PK/.lock"
+LOCK_MAX_AGE=180
+rm -f "$STATE/pending"
+
+# mkdir is atomic. A lock older than LOCK_MAX_AGE seconds is left over from a
+# sync that died or failed validation, and is taken over.
+if ! mkdir "$LOCK" 2>/dev/null; then
+  age=$(( $(date +%s) - $(cat "$LOCK/since" 2>/dev/null || echo 0) ))
+  if [ "$age" -lt "$LOCK_MAX_AGE" ]; then
+    echo "another sync holds the lock (started ${age}s ago): skipping"
+    exit 0
+  fi
+  echo "taking over a stale lock (${age}s old)"
+  rm -rf "$LOCK"
+  mkdir "$LOCK"
+fi
+date +%s >"$LOCK/since"
+# Without a pending revision nothing follows this step, so give the lock back.
+trap '[ -f "$STATE/pending" ] || rm -rf "$LOCK"' EXIT
 
 apk add --no-cache git-lfs openssh-client >/dev/null
 
@@ -130,5 +150,5 @@ done
 printf '%s' "$resolved" >"$rev/.sources"
 rm -rf "$PK/.work"
 chmod -R a+rX "$rev"
-printf '%s\n' "$id" >"$PK/.pending"
-chmod a+r "$PK/.pending"
+printf '%s\n' "$id" >"$STATE/pending"
+chmod a+r "$STATE/pending"
