@@ -15,7 +15,7 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 1.2.0
+version: 1.3.0
 # outprint release tag without the leading v
 appVersion: "1.0.1"
 
@@ -32,6 +32,8 @@ annotations:
     - name: outprint-injector
       image: ghcr.io/taskmedia/outprint-injector:1.0.1
   artifacthub.io/changes: |
+    - kind: added
+      description: packages.sources takes several Git repositories whose packages are merged into one revision
     - kind: added
       description: packages.git, packages.image and packages.existingClaim mount your own Template and Configuration packages
     - kind: added

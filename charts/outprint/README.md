@@ -69,11 +69,27 @@ serviceConfig:
     configuration: acme
 ```
 
-With `git`, a Job (at install and on a change of `url`, `ref`, `commit` or `path`) and a CronJob (every
-`packages.git.interval`) resolve `ref` to a commit. On a change they clone it (Git LFS included), run
+With `git`, a Job (at install and on a change of a source) and a CronJob (every `packages.git.interval`)
+resolve each `ref` to a commit. On a change they clone the commits (Git LFS included), run
 `outprint validate` against the service configuration and switch over only if it passes; then they restart
-Gateway and Worker. A broken revision never replaces a working one. `packages.git.commit` refuses any other
-commit. Only the Job has network access; the Worker keeps its NetworkPolicy. The revisions live on a
+Gateway and Worker. A broken revision never replaces a working one. `commit` refuses any other commit.
+
+For packages from more than one repository, list them under `packages.sources` (the shorthand
+`packages.git` counts as a source named `default`):
+
+```yaml
+packages:
+  sources:
+    - name: letters
+      git: {url: git@github.com:example/letters.git, ref: v1.0.0, path: outprint, sshKeySecret: letters-key}
+    - name: reports
+      git: {url: https://github.com/example/reports.git, ref: main}
+```
+
+Each source brings `templates/<name>` and/or `configurations/<name>`. The packages of all sources are merged
+into one revision that is validated and switched as a whole; a package name that two sources provide stops
+the sync and keeps the running revision. `interval`, `image`, `resources`, `persistence` and `keepRevisions`
+under `packages.git` apply to all sources. Only the Job has network access; the Worker keeps its NetworkPolicy. The revisions live on a
 `ReadWriteOnce` PVC, so on a multi-node cluster pin Gateway, Worker and the Job to one node or use a
 ReadWriteMany storage class. When a change adds a Binding that the running revision does not have yet, the
 Gateway and the Worker restart until the Job has switched over.
