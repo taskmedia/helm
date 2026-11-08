@@ -7,6 +7,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: "{{ include "outprint.fullname" . }}-injector"
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
   {{- with .Values.ingressRoute.annotations }}

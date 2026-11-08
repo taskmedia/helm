@@ -3,6 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: "{{ include "outprint.fullname" . }}"
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
 spec:

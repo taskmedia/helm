@@ -15,7 +15,7 @@ sources:
   - https://github.com/taskmedia/helm
 icon: https://media.task.media/images/logo.png
 type: application
-version: 2.0.3
+version: 2.0.4
 # app image tag (v<appVersion>); bumped manually when the bridge repo releases
 appVersion: "2.1.1"
 
@@ -30,5 +30,5 @@ annotations:
     - name: paperlessngx-ftp-bridge
       image: ghcr.io/taskmedia/paperlessngx-ftp-bridge-image:v2.1.1
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Only create the Secret when an inline password is configured
+    - kind: changed
+      description: Set metadata.namespace to the release namespace on all resources

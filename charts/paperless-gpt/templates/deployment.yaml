@@ -7,6 +7,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ include "paperlessgpt.fullname" . }}"
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "paperlessgpt.labels" . | nindent 4 }}
 spec:
