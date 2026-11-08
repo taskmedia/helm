@@ -1,5 +1,6 @@
 {{- define "outprint.packagesSyncPod" }}
 {{- $git := .Values.packages.git }}
+{{- $sources := fromJsonArray (include "outprint.packagesSources" .) }}
 {{- $name := printf "%s-packages" (include "outprint.fullname" .) }}
 serviceAccountName: {{ $name }}
 restartPolicy: Never
@@ -15,11 +16,6 @@ initContainers:
     image: {{ printf "%s:%s" $git.image.repository $git.image.tag | quote }}
     imagePullPolicy: {{ $git.image.pullPolicy }}
     command: ["sh", "/scripts/sync.sh"]
-    env:
-      - { name: GIT_URL, value: {{ $git.url | quote }} }
-      - { name: GIT_REF, value: {{ $git.ref | quote }} }
-      - { name: GIT_COMMIT, value: {{ $git.commit | quote }} }
-      - { name: PKG_PATH, value: {{ trimAll "/" $git.path | quote }} }
     securityContext:
       runAsUser: 0
       allowPrivilegeEscalation: false
@@ -31,8 +27,10 @@ initContainers:
     volumeMounts:
       - { name: packages, mountPath: /packages }
       - { name: scripts, mountPath: /scripts, readOnly: true }
-      {{- if $git.sshKeySecret }}
-      - { name: ssh, mountPath: /ssh, readOnly: true }
+      {{- range $sources }}
+      {{- if .sshKeySecret }}
+      - { name: {{ printf "ssh-%s" .name }}, mountPath: {{ printf "/ssh/%s" .name | quote }}, readOnly: true }
+      {{- end }}
       {{- end }}
   - name: validate
     image: {{ include "outprint.image" (dict "repository" .Values.image.repository "tag" .Values.image.tag "appVersion" .Chart.AppVersion) | quote }}
@@ -87,10 +85,12 @@ volumes:
       name: {{ include "outprint.fullname" . }}-service
   - name: tmp
     emptyDir: { sizeLimit: 64Mi }
-  {{- if $git.sshKeySecret }}
-  - name: ssh
+  {{- range $sources }}
+  {{- if .sshKeySecret }}
+  - name: {{ printf "ssh-%s" .name }}
     secret:
-      secretName: {{ $git.sshKeySecret }}
+      secretName: {{ .sshKeySecret }}
       defaultMode: 0400
+  {{- end }}
   {{- end }}
 {{- end }}

@@ -69,6 +69,8 @@ metadata:
     {{- include "outprint.labels" . | nindent 4 }}
     app.kubernetes.io/component: packages
 data:
+  sources.json: |
+    {{- include "outprint.packagesSources" . | nindent 4 }}
   sync.sh: |
     {{- .Files.Get "files/packages-sync.sh" | nindent 4 }}
   validate.sh: |
@@ -100,13 +102,13 @@ spec:
         spec:
           {{- include "outprint.packagesSyncPod" . | nindent 10 }}
 ---
-# First sync (and a sync after a change of url, ref, commit or path) without
-# waiting for the next CronJob tick. The name carries a hash of those values,
-# so a change creates a fresh Job.
+# First sync (and a sync after a change of the sources) without waiting for
+# the next CronJob tick. The name carries a hash of the sources, so a change
+# creates a fresh Job.
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ printf "%s-sync-%s" $name (printf "%s|%s|%s|%s" $git.url $git.ref $git.commit $git.path | sha256sum | trunc 8) }}
+  name: {{ printf "%s-sync-%s" $name (include "outprint.packagesSources" . | sha256sum | trunc 8) }}
   labels:
     {{- include "outprint.labels" . | nindent 4 }}
     app.kubernetes.io/component: packages

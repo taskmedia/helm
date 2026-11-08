@@ -56,11 +56,16 @@ workerToken:
 # through OUTPRINT_TEMPLATES_ROOT / OUTPRINT_CONFIGURATIONS_ROOT. Allow the
 # pairs you want in serviceConfig.bindings.
 packages:
-  # Packages in a Git repository. A CronJob (and a hook Job on install and
-  # upgrade) resolves `ref` to a commit; on a change it clones the commit
-  # (Git LFS included), runs `outprint validate`, switches over only if the
-  # check passes, then restarts Gateway and Worker. Only this Job has network;
-  # the Worker keeps its NetworkPolicy.
+  # Packages in Git repositories. A CronJob (and a Job on install and on a
+  # change of the sources) resolves each `ref` to a commit; on a change it
+  # clones the commits (Git LFS included), merges their packages into one
+  # revision, runs `outprint validate`, switches over only if the check passes,
+  # then restarts Gateway and Worker. Only this Job has network; the Worker
+  # keeps its NetworkPolicy.
+  #
+  # `git` below is the shorthand for one repository. For more than one, list
+  # them under `sources` (see there). The settings `interval`, `image`,
+  # `resources`, `persistence` and `keepRevisions` of `git` apply to all sources.
   git:
     # SSH or HTTPS URL. Empty = off.
     url: ""
@@ -91,6 +96,25 @@ packages:
       accessMode: ReadWriteOnce
     # Keep this many old revisions besides the active one.
     keepRevisions: 2
+  # Several Git repositories. The shorthand `git` above, if its `url` is set,
+  # counts as a source named `default`. Each source brings Template and
+  # Configuration packages (folders `templates/<name>` and
+  # `configurations/<name>`, at least one of the two). A package name must be
+  # unique across all sources; a clash stops the sync and keeps the running
+  # revision. Names of sources: lower case letters, digits and `-`.
+  #
+  # sources:
+  #   - name: letters
+  #     git:
+  #       url: git@github.com:example/letters.git
+  #       ref: v1.0.0
+  #       path: outprint
+  #       sshKeySecret: letters-deploy-key
+  #   - name: reports
+  #     git:
+  #       url: https://github.com/example/reports.git
+  #       ref: main
+  sources: []
   # Packages in an OCI image (Kubernetes image volume, Kubernetes 1.35+ or the
   # ImageVolume feature gate). The image holds templates/ and configurations/.
   image:
