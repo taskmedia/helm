@@ -48,6 +48,59 @@ workerToken:
   enabled: true
   existingSecret: ""
 
+# Your own Template and Configuration packages (docs: Install > Run Outprint >
+# Your own Templates and Configurations). Set at most one source. Without one,
+# the packages baked into the image (neutral, example) are used.
+#
+# Gateway and Worker mount the packages read-only at /packages and read them
+# through OUTPRINT_TEMPLATES_ROOT / OUTPRINT_CONFIGURATIONS_ROOT. Allow the
+# pairs you want in serviceConfig.bindings.
+packages:
+  # Packages in a Git repository. A CronJob (and a hook Job on install and
+  # upgrade) resolves `ref` to a commit; on a change it clones the commit
+  # (Git LFS included), runs `outprint validate`, switches over only if the
+  # check passes, then restarts Gateway and Worker. Only this Job has network;
+  # the Worker keeps its NetworkPolicy.
+  git:
+    # SSH or HTTPS URL. Empty = off.
+    url: ""
+    # Tag, branch or commit.
+    ref: main
+    # Optional integrity check: refuse any other commit (full or abbreviated SHA).
+    commit: ""
+    # Folder in the repository that holds templates/ and configurations/.
+    path: ""
+    # Secret with key `ssh-privatekey` (and optionally `known_hosts`) for a
+    # private repository. Empty = anonymous HTTPS.
+    sshKeySecret: ""
+    # How often the CronJob checks `ref`.
+    interval: 5m
+    # Needs git, git-lfs (installed at run time), ssh and kubectl.
+    image:
+      repository: alpine/k8s
+      tag: "1.33.4"
+      pullPolicy: IfNotPresent
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    persistence:
+      # Holds the checked out revisions. ReadWriteOnce: Gateway, Worker and the
+      # Job must run on the same node (single node clusters need nothing).
+      size: 100Mi
+      storageClass: ""
+      accessMode: ReadWriteOnce
+    # Keep this many old revisions besides the active one.
+    keepRevisions: 2
+  # Packages in an OCI image (Kubernetes image volume, Kubernetes 1.35+ or the
+  # ImageVolume feature gate). The image holds templates/ and configurations/.
+  image:
+    reference: ""
+    pullPolicy: IfNotPresent
+  # An existing PersistentVolumeClaim that holds templates/ and configurations/.
+  existingClaim: ""
+  # Folder inside the image or claim that holds templates/ and configurations/.
+  path: ""
+
 worker:
   # One job per replica. Throughput scales with replicas.
   replicas: 1
@@ -60,6 +113,8 @@ worker:
   tmpSize: 64Mi
   # Extra environment, for example OUTPRINT_TIMEOUT, OUTPRINT_MAX_PAGES.
   env: {}
+  extraVolumes: []
+  extraVolumeMounts: []
   nodeSelector: {}
   tolerations: []
   affinity: {}
@@ -76,6 +131,8 @@ gateway:
     limits: {cpu: "1", memory: 256Mi}
   # Extra environment, for example the OUTPRINT_BUTTON_* placement options.
   env: {}
+  extraVolumes: []
+  extraVolumeMounts: []
   nodeSelector: {}
   tolerations: []
   affinity: {}

@@ -33,6 +33,7 @@ spec:
       securityContext:
         {{- include "outprint.podSecurity" (dict "uid" 10001) | nindent 8 }}
         fsGroup: 10001
+      {{- include "outprint.packagesWait" . | nindent 6 }}
       containers:
         - name: worker
           image: {{ include "outprint.image" (dict "repository" .Values.image.repository "tag" .Values.image.tag "appVersion" .Chart.AppVersion) | quote }}
@@ -48,6 +49,7 @@ spec:
             - name: OUTPRINT_SERVICE_CONFIG
               value: /etc/outprint/service.yaml
             {{- include "outprint.tokenEnv" . | nindent 12 }}
+            {{- include "outprint.packagesEnv" . | nindent 12 }}
             {{- include "outprint.extraEnv" .Values.worker.env | nindent 12 }}
           ports:
             - name: http
@@ -69,6 +71,10 @@ spec:
             - { name: work, mountPath: /work }
             - { name: tmp, mountPath: /tmp }
             - { name: service-config, mountPath: /etc/outprint, readOnly: true }
+            {{- include "outprint.packagesVolumeMount" . | nindent 12 }}
+            {{- with .Values.worker.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
       volumes:
         - name: work
           emptyDir: { medium: Memory, sizeLimit: {{ .Values.worker.workDirSize }} }
@@ -77,6 +83,10 @@ spec:
         - name: service-config
           configMap:
             name: {{ include "outprint.fullname" . }}-service
+        {{- include "outprint.packagesVolume" . | nindent 8 }}
+        {{- with .Values.worker.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.worker.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

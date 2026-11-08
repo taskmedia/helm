@@ -47,3 +47,37 @@ ingressRoute:
 ```
 
 Needs `injector.enabled` and the Traefik (and, for the certificate, cert-manager) CRDs in the cluster.
+
+## Your own Templates and Configurations
+
+The chart ships `neutral` and `example` in the image. To use your own packages, set one source under
+`packages` (documentation: Install > Run Outprint > Your own Templates and Configurations):
+
+```yaml
+packages:
+  git:
+    url: git@github.com:example/letters.git
+    ref: v1.0.0                       # tag, branch or commit
+    path: outprint                    # folder with templates/ and configurations/
+    sshKeySecret: letters-deploy-key  # key `ssh-privatekey`, optional `known_hosts`
+serviceConfig:
+  bindings:
+    - template: letter
+      configuration: acme
+  defaultBinding:
+    template: letter
+    configuration: acme
+```
+
+With `git`, a Job (at install and on a change of `url`, `ref`, `commit` or `path`) and a CronJob (every
+`packages.git.interval`) resolve `ref` to a commit. On a change they clone it (Git LFS included), run
+`outprint validate` against the service configuration and switch over only if it passes; then they restart
+Gateway and Worker. A broken revision never replaces a working one. `packages.git.commit` refuses any other
+commit. Only the Job has network access; the Worker keeps its NetworkPolicy. The revisions live on a
+`ReadWriteOnce` PVC, so on a multi-node cluster pin Gateway, Worker and the Job to one node or use a
+ReadWriteMany storage class. When a change adds a Binding that the running revision does not have yet, the
+Gateway and the Worker restart until the Job has switched over.
+
+`packages.image` mounts an OCI image as a Kubernetes image volume (Kubernetes 1.35+ or the `ImageVolume`
+feature gate); `packages.existingClaim` mounts a PVC you maintain. `gateway.extraVolumes` /
+`gateway.extraVolumeMounts` (and the same under `worker`) cover everything else.

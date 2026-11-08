@@ -31,6 +31,7 @@ spec:
       {{- end }}
       securityContext:
         {{- include "outprint.podSecurity" (dict "uid" 10001) | nindent 8 }}
+      {{- include "outprint.packagesWait" . | nindent 6 }}
       containers:
         - name: gateway
           image: {{ include "outprint.image" (dict "repository" .Values.image.repository "tag" .Values.image.tag "appVersion" .Chart.AppVersion) | quote }}
@@ -52,6 +53,7 @@ spec:
               value: {{ . | quote }}
             {{- end }}
             {{- include "outprint.tokenEnv" . | nindent 12 }}
+            {{- include "outprint.packagesEnv" . | nindent 12 }}
             {{- include "outprint.extraEnv" .Values.gateway.env | nindent 12 }}
           ports:
             - name: http
@@ -71,10 +73,18 @@ spec:
             {{- toYaml .Values.gateway.resources | nindent 12 }}
           volumeMounts:
             - { name: service-config, mountPath: /etc/outprint, readOnly: true }
+            {{- include "outprint.packagesVolumeMount" . | nindent 12 }}
+            {{- with .Values.gateway.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
       volumes:
         - name: service-config
           configMap:
             name: {{ include "outprint.fullname" . }}-service
+        {{- include "outprint.packagesVolume" . | nindent 8 }}
+        {{- with .Values.gateway.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.gateway.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
