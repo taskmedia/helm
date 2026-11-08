@@ -5,6 +5,43 @@ entries:
       artifacthub.io/category: networking
       artifacthub.io/changes: |
         - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: ipsec-vpn-server
+          image: hwdsl2/ipsec-vpn-server:latest
+        - name: init
+          image: bash:alpine3.15
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/ipsec-vpn-server
+    apiVersion: v2
+    appVersion: latest
+    created: "2026-11-08T20:58:24.028406808Z"
+    description: Deploy IPsec VPN server inside K8s with optional sealed-secrets
+    digest: e2b5c4a8c5c26d7b20cd7c4cf7568db4aa235fedf4b9b3df8acdc34fb5f26511
+    home: https://helm.task.media/ipsec-vpn-server
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - vpn
+    - ipsec
+    - traefik
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: ipsec-vpn-server
+    sources:
+    - https://github.com/hwdsl2/docker-ipsec-vpn-server
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/ipsec-vpn-server-2.2.2/ipsec-vpn-server-2.2.2.tgz
+    version: 2.2.2
+  - annotations:
+      artifacthub.io/category: networking
+      artifacthub.io/changes: |
+        - kind: changed
           description: Add Artifact Hub metadata (category, links, images)
       artifacthub.io/images: |
         - name: ipsec-vpn-server
@@ -244,6 +281,44 @@ entries:
     - https://helm.task.media/ipsec-vpn-server/ipsec-vpn-server-1.0.1.tgz
     version: 1.0.1
   outprint:
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: outprint
+          image: ghcr.io/taskmedia/outprint:1.1.1
+        - name: outprint-injector
+          image: ghcr.io/taskmedia/outprint-injector:1.1.1
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/outprint
+    apiVersion: v2
+    appVersion: 1.1.1
+    created: "2026-11-08T20:58:24.205895111Z"
+    description: Outprint for Outline - Gateway, network-less Worker and injector
+    digest: d2d00631f122d669d58f964458261443b3ce9b1bdbe66e3a87e43f8a349326ec
+    home: https://helm.task.media/outprint
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - outprint
+    - outline
+    - pdf
+    - latex
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: outprint
+    sources:
+    - https://github.com/taskmedia/outprint
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/outprint-1.3.4/outprint-1.3.4.tgz
+    version: 1.3.4
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
@@ -558,6 +633,43 @@ entries:
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
+        - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: paperless-gpt
+          image: icereed/paperless-gpt:v0.29.0
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperless-gpt
+    apiVersion: v2
+    appVersion: 0.29.0
+    created: "2026-11-08T20:58:24.35570645Z"
+    description: A Helm chart for paperless-gpt, an LLM-powered OCR and metadata assistant
+      for paperless-ngx
+    digest: 6127809de41e13d55eedf5749af7a8e86aa43c72c3361078917fbe2443633c28
+    home: https://helm.task.media/paperless-gpt
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-gpt
+    - paperless-ngx
+    - ocr
+    - llm
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-gpt
+    sources:
+    - https://github.com/icereed/paperless-gpt
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.3.1/paperless-gpt-0.3.1.tgz
+    version: 0.3.1
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
         - kind: added
           description: Optional Traefik IngressRoute (ingressRoute.*) with optional cert-manager Certificate
       artifacthub.io/images: |
@@ -654,6 +766,41 @@ entries:
     - https://github.com/taskmedia/helm/releases/download/paperless-gpt-0.1.0/paperless-gpt-0.1.0.tgz
     version: 0.1.0
   paperless-ngx-backup:
+  - annotations:
+      artifacthub.io/category: storage
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: kubectl-gpg-ncftp
+          image: ghcr.io/taskmedia/kubectl-gpg-ncftp:main
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-backup
+    apiVersion: v2
+    created: "2026-11-08T20:58:24.506130248Z"
+    description: Backup paperless-ngx via K8s cronjob to FTP
+    digest: 3cbabf5b756f431b912f644109ea04a333627104b1e4592e2af46f522c55d0a7
+    home: https://helm.task.media/paperlessngx-backup
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - gpg
+    - backup
+    - document exporter
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperless-ngx-backup
+    sources:
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperless-ngx-backup-1.1.3/paperless-ngx-backup-1.1.3.tgz
+    version: 1.1.3
   - annotations:
       artifacthub.io/category: storage
       artifacthub.io/changes: |
@@ -850,6 +997,43 @@ entries:
     - https://helm.task.media/paperlessngx-ftp-bridge/paperless-ngx-ftp-bridge-0.1.3.tgz
     version: 0.1.3
   paperlessngx-ftp-bridge:
+  - annotations:
+      artifacthub.io/category: skip-prediction
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: paperlessngx-ftp-bridge
+          image: ghcr.io/taskmedia/paperlessngx-ftp-bridge-image:v2.1.1
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/paperlessngx-ftp-bridge
+    apiVersion: v2
+    appVersion: 2.1.1
+    created: "2026-11-08T20:58:24.635772943Z"
+    description: A Helm chart for an embedded FTP/FTPS server that forwards uploaded
+      files to paperless-ngx
+    digest: cd25ce2836285d21c11487e477c2d6c4ae98a214b9865bd47bbb5b7f469f22c7
+    home: https://helm.task.media/paperlessngx-ftp-bridge
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - paperless-ngx
+    - ftp
+    - upload
+    - api
+    maintainers:
+    - name: fty4
+      url: https://github.com/fty4
+    name: paperlessngx-ftp-bridge
+    sources:
+    - https://github.com/taskmedia/paperlessngx-ftp-bridge
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/paperlessngx-ftp-bridge-2.0.4/paperlessngx-ftp-bridge-2.0.4.tgz
+    version: 2.0.4
   - annotations:
       artifacthub.io/category: skip-prediction
       artifacthub.io/changes: |
@@ -1153,6 +1337,46 @@ entries:
       artifacthub.io/category: networking
       artifacthub.io/changes: |
         - kind: changed
+          description: Set metadata.namespace to the release namespace on all resources
+      artifacthub.io/images: |
+        - name: nginx
+          image: nginxinc/nginx-unprivileged
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/taskmedia/helm/issues
+        - name: source
+          url: https://github.com/taskmedia/helm/tree/main/charts/vpn-ios-profile
+    apiVersion: v2
+    appVersion: latest
+    created: "2026-11-08T20:58:24.8392677Z"
+    dependencies:
+    - alias: vpnserver
+      name: ipsec-vpn-server
+      repository: https://helm.task.media/
+      version: 2.2.0
+    description: Deploy a VPN server in K8s with provided iOS profile
+    digest: ea84da896ffa9c900b69923f9fc3b4b051b663f8cf3647a40ba25570273a42e4
+    home: https://helm.task.media/vpn-ios-profile/
+    icon: https://media.task.media/images/logo.png
+    keywords:
+    - vpn
+    - ipsec
+    - ios
+    - mobileconfig
+    maintainers:
+    - name: taskmedia
+      url: https://task.media
+    name: vpn-ios-profile
+    sources:
+    - https://github.com/taskmedia/helm
+    type: application
+    urls:
+    - https://github.com/taskmedia/helm/releases/download/vpn-ios-profile-0.3.3/vpn-ios-profile-0.3.3.tgz
+    version: 0.3.3
+  - annotations:
+      artifacthub.io/category: networking
+      artifacthub.io/changes: |
+        - kind: changed
           description: Add Artifact Hub metadata (category, links, images)
       artifacthub.io/images: |
         - name: nginx
@@ -1317,4 +1541,4 @@ entries:
     urls:
     - https://helm.task.media/vpn-ios-profile/vpn-ios-profile-0.1.1.tgz
     version: 0.1.1
-generated: "2026-11-08T15:01:22.780044672Z"
+generated: "2026-11-08T20:58:24.83942311Z"
